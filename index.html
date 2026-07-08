@@ -3,757 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRAFTED VISIONS TRAVEL | Creative Artisan Experience</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Crafted Visions | Team-Buildings &amp; Craft Workshops in Tunis</title>
+    <meta name="description" content="Team-buildings and individual workshops in Tunis that pair endangered traditional crafts with professional coaching methods. Collaboration, communication and connection — made by hand.">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340..600;1,9..144,340..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="images/opt/hero-bg.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="images/collage_1.webp">
-    <link rel="preload" as="image" href="images/collage_2.webp">
-    <link rel="preload" as="image" href="images/collage_3.webp">
-    <link rel="preload" as="image" href="images/collage_4.webp">
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-    <meta property="og:title" content="CRAFTED VISIONS TRAVEL | Creative Artisan Weekend">
-    <meta property="og:description" content="An intimate creative experience in Tunis, connecting you directly with master artisans.">
+    <meta property="og:title" content="Crafted Visions | Transformation, made by hand">
+    <meta property="og:description" content="Team-buildings and workshops in Tunis that pair traditional crafts with coaching methodology.">
     <meta property="og:image" content="https://craftedvisionstravel.com/images/opt/hero-bg.webp">
     <meta property="og:url" content="https://craftedvisionstravel.com/">
     <meta property="og:type" content="website">
-    <style>
-        /* Concept section: tighten spacing around wave dividers + before collage */
-        .concept .container { padding-bottom: 2rem; }
-        .highlights { margin-bottom: 0 !important; }
-        .highlights li { padding: 0.35rem 0; }
-        .highlights li.divider { padding: 0.15rem 0; }
-
-        /* Collage strip — desktop only */
-        @media (min-width: 701px) {
-            .collage-strip {
-                width: 100%;
-                height: 50vh;
-                display: grid;
-                grid-template-columns: 2fr 1fr 1fr 1.5fr;
-                gap: 4px;
-                overflow: hidden;
-            }
-            .collage-strip > div { overflow: hidden; }
-            .collage-strip img {
-                width: 100%; height: 100%;
-                object-fit: cover;
-                object-position: center center;
-                display: block;
-                transform: scale(1.0);
-                transition: transform 0.7s ease;
-            }
-            .collage-strip > div:hover img { transform: scale(1.03); }
-        }
-
-        /* Tighten About -> Program gap */
-        .about .container { padding-bottom: 3rem; }
-        .program .container { padding-top: 3rem; }
-
-        /* Fix nav overlap on anchor scroll for all sections */
-        section[id], header[id], footer[id] {
-            scroll-margin-top: calc(var(--nav-height) + 1rem);
-        }
-
-        /* Program layout: cards + checklist side by side */
-        .program-inner {
-            display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 4rem;
-            align-items: start;
-        }
-        .program-checklist {
-            position: sticky;
-            top: calc(var(--nav-height) + 2rem);
-        }
-        .program-checklist__title {
-            font-family: var(--font-heading);
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #aaa;
-            margin-bottom: 1.5rem;
-        }
-        .program-checklist ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 2rem 0;
-        }
-        .program-checklist li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 0.85rem;
-            color: #444;
-            line-height: 1.5;
-            padding: 0.55rem 0;
-            border-bottom: 1px solid #f0ede9;
-        }
-        .program-checklist li:last-child { border-bottom: none; }
-        .program-checklist li::before {
-            content: "✓";
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-            margin-top: 0.05rem;
-        }
-        @media (max-width: 900px) {
-            .program-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-            .program-checklist { position: static; }
-        }
-
-        /* Program cards: uniform description alignment */
-        .day-card__time {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-        }
-        .day-card__workshop {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        .day-card__desc {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        /* Photo grid for stories */
-        .photo-grid-stories {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            grid-template-rows: 240px 240px;
-            gap: 8px;
-            margin-bottom: 3rem;
-        }
-        .photo-grid-stories > div { overflow: hidden; }
-        .photo-grid-stories > div:first-child { grid-row: span 2; }
-        .photo-grid-stories img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            display: block;
-            transform: scale(1.0);
-            transition: transform 0.6s ease;
-        }
-        .photo-grid-stories > div:hover img { transform: scale(1.03); }
-        .photo-grid-stories > div:nth-child(3) img { object-position: center 40%; }
-
-        /* Tighten Stories -> Pricing gap */
-        #stories .container { padding-bottom: 3rem; }
-        .pricing .container { padding-top: 3rem; }
-
-        /* Booking price cards — fixed row heights for perfect alignment */
-        .booking-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            max-width: 700px;
-            margin: 0 auto 3rem auto;
-        }
-        .booking-card {
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            text-decoration: none;
-            color: var(--text-color);
-            display: grid;
-            grid-template-rows: 2.5rem auto auto auto;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        .booking-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.07);
-        }
-        .booking-card__label {
-            font-family: var(--font-heading);
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #aaa;
-            align-self: center;
-        }
-        .booking-card__title {
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 0.75rem 0 0.5rem;
-        }
-        .booking-card__price {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            font-weight: 400;
-            padding: 0.75rem 0;
-        }
-        .booking-card__note {
-            font-size: 0.78rem;
-            color: #888;
-            line-height: 1.5;
-            padding-top: 0.5rem;
-        }
-        .booking-card--featured { border-color: var(--text-color); }
-        .booking-card--community { border-style: dashed; background: var(--bg-color); }
-
-        /* Newsletter */
-        .newsletter-section { background-color: var(--text-color); padding: 0; }
-        .newsletter-section .container {
-            text-align: center;
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
-        footer .container {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-        .newsletter-form {
-            display: flex;
-            max-width: 460px;
-            margin: 0 auto 1rem auto;
-        }
-        .newsletter-form input {
-            flex: 1;
-            padding: 14px 20px;
-            border: 1px solid #444;
-            background: #2a2a2a;
-            color: #fff;
-            font-size: 0.9rem;
-            outline: none;
-            font-family: var(--font-body);
-        }
-        .newsletter-form input::placeholder { color: #666; }
-        .newsletter-form button {
-            padding: 14px 24px;
-            background: var(--accent-color);
-            color: #fff;
-            border: none;
-            font-family: var(--font-heading);
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .newsletter-form button:hover { opacity: 0.85; }
-
-        /* ─── Hamburger button ─── */
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-        }
-        .nav-hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--text-color);
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-        .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-        .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        /* ─── Carousel dots ─── */
-        .carousel-dots {
-            display: none;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 0 4px;
-        }
-        .carousel-dots .dot {
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: #ccc;
-            transition: background 0.3s;
-        }
-        .carousel-dots .dot.active { background: var(--accent-color); }
-
-        @media (max-width: 700px) {
-            /* Nav mobile */
-            .nav-hamburger { display: flex; }
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0; left: 0;
-                width: 100%; height: 100vh;
-                background: rgba(250,248,244,0.98);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                z-index: 1000;
-            }
-            .nav-links.open { display: flex; }
-            .nav-link-item {
-                font-family: var(--font-heading);
-                font-size: 1.1rem;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: var(--text-color);
-                text-decoration: none;
-            }
-
-            /* Collage carousel */
-            .collage-strip {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scroll-behavior: smooth;
-                grid-template-columns: unset;
-                grid-template-rows: unset;
-                height: 120vw;
-                gap: 0;
-                scrollbar-width: none;
-            }
-            .collage-strip::-webkit-scrollbar { display: none; }
-            .collage-strip > div {
-                flex: 0 0 100%;
-                scroll-snap-align: start;
-                grid-row: unset !important;
-                overflow: hidden;
-                height: 120vw;
-            }
-            .collage-strip img {
-                width: 100%; height: 100%;
-                object-fit: cover;
-                object-position: center center;
-            }
-            #collage-dots { display: flex; }
-
-            /* Stories photo carousel */
-            .photo-grid-stories {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scroll-behavior: smooth;
-                grid-template-columns: unset;
-                grid-template-rows: unset;
-                height: 80vw;
-                gap: 0;
-                margin-bottom: 0.75rem;
-                scrollbar-width: none;
-            }
-            .photo-grid-stories::-webkit-scrollbar { display: none; }
-            .photo-grid-stories > div {
-                flex: 0 0 100%;
-                scroll-snap-align: start;
-                grid-row: unset !important;
-                overflow: hidden;
-                height: 80vw;
-            }
-            .photo-grid-stories img {
-                width: 100%; height: 100%;
-                object-fit: cover;
-            }
-            #stories-dots { display: flex; margin-bottom: 2rem; }
-
-            /* Newsletter form stacked */
-            .newsletter-form { flex-direction: column; }
-
-            /* Booking cards stacked */
-            .booking-options { grid-template-columns: 1fr; max-width: 360px; }
-
-            /* Hero tweaks */
-            .hero-content h1 { font-size: clamp(2rem, 10vw, 3.5rem); }
-            .hero-content h2 { font-size: clamp(0.65rem, 3vw, 0.9rem); }
-
-            /* Full-width image section height */
-            .full-width-image { min-height: 40vw; }
-
-            /* Program inner */
-            .program-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-            .program-checklist { position: static; }
-
-            /* Grid program cards */
-            .grid-program { grid-template-columns: 1fr !important; }
-
-            /* About grid */
-            .about-grid { grid-template-columns: 1fr !important; }
-            .about-image { order: -1; }
-            .about-image img { max-height: 55vw; }
-
-            /* Concept padding */
-            .concept .container { padding-left: 1.25rem; padding-right: 1.25rem; }
-        }
-    </style>
 </head>
 <body>
 
-    <nav class="sticky-nav">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">C V .</a>
-            <div class="nav-links" id="nav-links">
-                <a href="#concept" class="nav-link-item">Concept</a>
-                <a href="#about" class="nav-link-item">About</a>
-                <a href="#program" class="nav-link-item">Program</a>
-                <a href="#stories" class="nav-link-item">Stories</a>
-                <a href="#pricing" class="nav-link-item">Pricing</a>
-                <a href="#contact" class="nav-link-item">Contact</a>
-            </div>
-            <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Crafted <span>Visions</span></a>
+        <div class="nav__links" id="nav-links">
+            <a href="team-buildings.html" class="nav__link">For Teams</a>
+            <a href="workshops.html" class="nav__link">Workshops</a>
+            <a href="about.html" class="nav__link">About</a>
+            <a href="contact.html" class="nav__link">Contact</a>
+            <a href="team-buildings.html#inquire" class="btn btn--small nav__cta">Plan a team event</a>
         </div>
-    </nav>
+        <button class="nav__burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
 
-    <header class="hero" id="home">
-        <div class="hero-content reveal">
-            <div class="logo-block">
-                <h1>C R A F T E D<br>V I S I O N S</h1>
+<main>
+
+    <!-- HERO -->
+    <header class="hero" id="home" style="background-image: url('images/opt/hero-bg.webp');">
+        <div class="container">
+            <div class="hero__content">
+                <span class="eyebrow">Tunis · Craft experiences with method</span>
+                <h1>Transformation,<br><em>made by hand.</em></h1>
+                <p class="hero__sub">Team-buildings and individual workshops that pair endangered traditional crafts with professional coaching methods — for teams that want more than an event, and people who want more than a class.</p>
+                <div class="btn-row">
+                    <a href="team-buildings.html" class="btn">Team experiences</a>
+                    <a href="workshops.html#calendar" class="btn--ghost-light btn">See workshop dates</a>
+                </div>
             </div>
-            <h2>CREATIVE ARTISAN WORKSHOPS</h2>
-            <p class="dates" style="margin-bottom:0;">13-17 May 2026, Tunis</p>
-            <p class="dates">Limited spots available</p>
-            <a href="#pricing" class="btn" style="margin-bottom:1.5rem;">Book now</a>
         </div>
     </header>
 
-    <section class="concept" id="concept">
-        <div class="container reveal">
-            <h3>Experience Tunisia through the hands of its artisans</h3>
-            <p>An intimate creative experience in Tunis, designed to help you slow down and step inside living craftsmanship. While most travelers see souvenir shops and typical tourist spots, we open doors to something far more intimate.</p>
-            <ul class="highlights" style="text-align:center; list-style:none; padding:0;">
-                <li class="divider">〰️</li>
-                <li>Leave with something you made with your own hands</li>
-                <li>Step inside a working atelier, not a tourist attraction</li>
-                <li>Join a small group - never more than 6 people</li>
-                <li class="divider">〰️</li>
-            </ul>
+    <!-- STATEMENT -->
+    <section class="section">
+        <div class="container container--narrow center reveal">
+            <span class="eyebrow">What we do</span>
+            <h2>Out of the meeting room,<br>into the atelier.</h2>
+            <p class="lead">We bring teams and individuals to the workbench of master artisans — where collaboration, focus and human connection aren&rsquo;t discussed on slides, but practiced with clay, wool, ink and paper. Phones off. Hands on.</p>
         </div>
     </section>
 
-    <!-- COLLAGE from workshop photos -->
-    <div class="collage-strip" id="collage-carousel">
-        <div><img src="images/collage_1.webp" alt="Ceramics workshop" loading="eager" fetchpriority="high"></div>
-        <div><img src="images/collage_2.webp" alt="Weaving workshop" loading="eager"></div>
-        <div><img src="images/collage_3.webp" alt="Calligraphy workshop" loading="eager"></div>
-        <div><img src="images/collage_4.webp" alt="Bookbinding workshop" loading="eager"></div>
-    </div>
-    <div class="carousel-dots" id="collage-dots" aria-hidden="true">
-        <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-    </div>
-
-    <section class="about" id="about">
-        <div class="container reveal about-grid">
-            <div class="about-text">
-                <h2 class="section-title" style="text-align: left;">THE VISION BEHIND</h2>
-                <p>Hey there! We're Alice and Janina - craft is at the heart of what we do.</p>
-                <p>Since 2018, Janina has hosted 20+ creative workshops across Europe, bringing people together through hands-on making. Alice has built relationships with 60+ artisans across the Maghreb through her brand <a href="https://faridique.com" target="_blank" rel="noopener">Faridique</a>.</p>
-                <p>This project was born from a simple idea: what if people could experience craftsmanship at its source - working side by side with artisans?</p>
-                <p>So we created exactly that: <strong>The Creative Artisan Experience</strong> - an intimate series of workshops in Tunis led by master artisans. Join us.</p>
-                <p class="signature">- Alice &amp; Janina</p>
-            </div>
-            <div class="about-image">
-                <img src="images/opt/alice-founder.webp" alt="Alice Tsvetkova - Founder" loading="lazy" decoding="async">
-            </div>
-        </div>
-    </section>
-
-    <!-- PROGRAM -->
-    <section class="program" id="program">
-        <div class="container reveal">
-            <h2 class="section-title">THE PROGRAM</h2>
-            <p class="disclaimer"><strong>Workshop language: French</strong><br>Small adjustments to the schedule may occur to ensure the best possible experience for everyone.</p>
-
-            <div class="program-inner">
-                <div class="grid-program">
-                    <div class="day-card">
-                        <img src="images/opt/atelier-poterie.webp" alt="Ceramics Workshop" class="card-img" loading="lazy" decoding="async">
-                        <h4>Wednesday - 13.05.</h4>
-                        <p class="day-card__time">14:00 - 18:00</p>
-                        <p class="day-card__workshop">Ceramics Workshop</p>
-                        <p class="day-card__desc">Shape clay with your hands and bring home a piece you made yourself, guided by a master ceramicist.</p>
-                    </div>
-                    <div class="day-card">
-                        <img src="images/calligraphy.webp" alt="Calligraphy Workshop" class="card-img" loading="lazy" decoding="async">
-                        <h4>Friday - 15.05.</h4>
-                        <p class="day-card__time">10:00 - 13:00</p>
-                        <p class="day-card__workshop">Calligraphy Workshop</p>
-                        <p class="day-card__desc">Discover the meditative rhythm of Arabic calligraphy in a beautiful creative space.</p>
-                    </div>
-                    <div class="day-card">
-                        <img src="images/book-binding.webp" alt="Bookbinding and Medina Tour" class="card-img" loading="lazy" decoding="async">
-                        <h4>Saturday - 16.05.</h4>
-                        <p class="day-card__time">10:00 - 13:00</p>
-                        <p class="day-card__workshop">Bookbinding Workshop</p>
-                        <p class="day-card__desc">Learn the ancient art of hand-binding from one of the last bookbinders in Tunis. Leave with a book you made yourself.</p>
-                        <br>
-                        <p class="day-card__time">15:00 - 16:30</p>
-                        <p class="day-card__workshop">Guided Medina Tour</p>
-                        <p class="day-card__desc">Explore the Medina through the eyes of someone who truly knows it - hidden corners, living craftsmanship, stories off the tourist trail.</p>
-                    </div>
-                    <div class="day-card">
-                        <img src="images/opt/atelier-poterie.webp" alt="Ceramics Workshop" class="card-img" loading="lazy" decoding="async">
-                        <h4>Sunday - 17.05.</h4>
-                        <p class="day-card__time">14:00 - 18:00</p>
-                        <p class="day-card__workshop">Ceramics Workshop</p>
-                        <p class="day-card__desc">A second session for those who missed Wednesday - or for those who started a piece and want to return to add the final color once it has fully dried.</p>
-                    </div>
-                </div>
-
-                <aside class="program-checklist">
-                    <p class="program-checklist__title">What's included</p>
-                    <ul>
-                        <li>All levels welcome - no experience needed</li>
-                        <li>Small group - max 6 participants</li>
-                        <li>Take home your own creation</li>
-                        <li>Materials, snacks and drinks included</li>
-                        <li>Selected ateliers in Tunis - meeting point shared upon booking</li>
-                        <li>Secure booking - confirmation within 24h</li>
-                        <li>Limited spots per session</li>
-                    </ul>
-                    <p style="font-family:var(--font-heading); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-color); text-align:center; margin-bottom:1rem;">Price per activity &nbsp;·&nbsp; <span style="color:var(--accent-color);">49 €</span></p>
-                    <a href="#pricing" class="btn" style="display:inline-block; width:100%; text-align:center; box-sizing:border-box;">Book now</a>
-                </aside>
-            </div>
-        </div>
-    </section>
-
-    <section class="full-width-image reveal" style="background-image: url('images/opt/authentic-details.webp');"></section>
-
-    <!-- STORIES -->
-    <section class="concept" id="stories">
-        <div class="container reveal">
-            <h2 class="section-title">FROM OUR MARCH EDITION</h2>
-            <p class="disclaimer">A first glimpse of what participants experienced during our first workshops.</p>
-
-            <div class="photo-grid-stories" id="stories-carousel">
-                <div><img src="images/pg_1.webp" alt="Workshop participant" loading="eager"></div>
-                <div><img src="images/pg_2.webp" alt="Bookbinding session" loading="eager"></div>
-                <div><img src="images/pg_3.webp" alt="Calligraphy session" loading="lazy"></div>
-                <div><img src="images/pg_4.webp" alt="Medina tour" loading="lazy"></div>
-                <div><img src="images/pg_5.webp" alt="Group photo" loading="lazy"></div>
-            </div>
-            <div class="carousel-dots" id="stories-dots" aria-hidden="true">
-                <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            </div>
-
-            <div class="grid-program">
-                <div class="day-card" style="border-left-color:var(--accent-color);">
-                    <p style="font-style:italic; font-size:0.95rem; line-height:1.75; color:#444; margin-bottom:1.5rem;">"I came not knowing what to expect and left with a handmade book, a piece of pottery, new friends and creative inspiration. I'll be back."</p>
-                    <p style="font-family:var(--font-heading); font-size:0.72rem; letter-spacing:0.12em; color:#aaa; text-transform:uppercase;">- Youssef, Tunisia</p>
-                </div>
-                <div class="day-card" style="border-left-color:var(--accent-color);">
-                    <p style="font-style:italic; font-size:0.95rem; line-height:1.75; color:#444; margin-bottom:1.5rem;">"Everything was seamless and clearly planned with care. I highly recommended for anyone wanting a deeper cultural experience."</p>
-                    <p style="font-family:var(--font-heading); font-size:0.72rem; letter-spacing:0.12em; color:#aaa; text-transform:uppercase;">- Emma, Germany</p>
-                </div>
-                <div class="day-card" style="border-left-color:var(--accent-color);">
-                    <p style="font-style:italic; font-size:0.95rem; line-height:1.75; color:#444; margin-bottom:1.5rem;">"I joined the Arabic calligraphy session in Tunis recently, and it was such a beautiful experience. This workshop slowed me down and made me appreciate the beauty of taking my time and enjoying art - I left feeling lighter, inspired, and really grateful."</p>
-                    <p style="font-family:var(--font-heading); font-size:0.72rem; letter-spacing:0.12em; color:#aaa; text-transform:uppercase;">- Hashi, Syria</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="pricing" id="pricing">
-        <div class="container reveal">
-            <h2 class="section-title">YOUR EXPERIENCE AWAITS</h2>
-            <p class="disclaimer">Choose what speaks to you &amp; check availability.<br>Every booking includes our <strong>Tunis Essentials Guide</strong> with favourite restaurants, cafes and local tips.</p>
-
-            <p style="text-align:center; font-family:var(--font-heading); font-size:0.8rem; letter-spacing:0.18em; text-transform:uppercase; margin-top:3rem; margin-bottom:3rem; color:var(--accent-color);">
-                <strong>
-                    Only 6 spots per session<br>
-                    Book now
-                </strong>
-            </p>
-            <!--
-                HOW BOOKING WORKS:
-                Two Stripe links cover all workshops:
-                - Standard (49€): one Stripe checkout with a dropdown to select the workshop
-                - Community (39€): same setup, separate link for Tunisians living & working in Tunisia
-                Replace STRIPE_STANDARD_LINK and STRIPE_COMMUNITY_LINK below with your actual Stripe URLs.
-                In Stripe, set up a Payment Link with a "Select workshop" dropdown as a custom field.
-            -->
-            <div class="booking-options">
-                <a href="https://buy.stripe.com/6oU00l9cY0C66ys8II53O08" target="_blank" class="booking-card booking-card--featured">
-                    <p class="booking-card__label">&nbsp;</p>
-                    <p class="booking-card__title">Standard</p>
-                    <p class="booking-card__price">49 €</p>
-                    <p class="booking-card__note">Choose your workshop after clicking.</p>
+    <!-- TWO PATHS -->
+    <section class="section section--tight" id="paths">
+        <div class="container">
+            <div class="paths reveal">
+                <a href="team-buildings.html" class="path" style="--img: url('images/opt/atelier-tissage.webp');">
+                    <span class="path__label">For companies &amp; teams</span>
+                    <h3>Team-Buildings &amp; Corporate Events</h3>
+                    <p>Coaching-based experiences in artisan ateliers, at your offices or as multi-day offsites. Your team builds collaboration, communication and intercultural competence — by building something real, together.</p>
+                    <span class="path__go">Explore team experiences &rarr;</span>
                 </a>
-                <a href="https://buy.stripe.com/14AfZj74Q70ug926AA53O09" target="_blank" class="booking-card booking-card--community">
-                    <p class="booking-card__label">For Tunisians living and working in Tunisia</p>
-                    <p class="booking-card__title">Community</p>
-                    <p class="booking-card__price">39 € / 135 TND</p>
-                    <p class="booking-card__note">Choose your workshop after clicking.</p>
-                </a>
-            </div>
-
-            <div style="padding:40px 0 20px; text-align:center;">
-                <p style="margin-bottom:40px; color:#666; font-size:14px;">After booking, you receive all location details and direct support if you need it.
-
-                </p>
-                <p style="margin-bottom:24px; color:#444; font-size:15px; font-weight:600;">Not sure yet?</p>
-                <a href="https://wa.me/+4915238418305" target="_blank" style="display:inline-block; background-color:#25D366; color:white; padding:16px 32px; border-radius:50px; font-size:14px; font-weight:bold; text-decoration:none;">
-                    💬 Message us on WhatsApp
+                <a href="workshops.html" class="path" style="--img: url('images/collage_1.webp');">
+                    <span class="path__label">For individuals</span>
+                    <h3>Individual Workshops</h3>
+                    <p>Ceramics, Arabic calligraphy, bookbinding and carpet weaving — weekly small-group sessions with master artisans in Tunis. Choose your date and book online.</p>
+                    <span class="path__go">See dates &amp; book &rarr;</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- NEWSLETTER -->
-    <section class="newsletter-section" id="newsletter">
-        <div class="container reveal">
-            <h2 style="color:var(--accent-color); margin-bottom:1rem; font-family:var(--font-heading); letter-spacing:0.2em;">STAY IN THE LOOP</h2>
-            <p style="color:#aaa; font-size:0.9rem; max-width:480px; margin:0 auto 2rem auto;">Get next dates and new workshops before they're announced publicly. No spam - just what matters.</p>
-            <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter-form" novalidate="">
-                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your email address" required="" value="">
-                <!-- Bot protection - do not remove -->
-                <div aria-hidden="true" style="position:absolute; left:-5000px;">
-                    <input type="text" name="b_329d7bb0d19143d6361e97af9_1495d74d12" tabindex="-1" value="">
+    <!-- WHY CRAFT, WHY NOW -->
+    <section class="section">
+        <div class="container">
+            <div class="reveal" style="max-width: 640px; margin-bottom: clamp(2.5rem, 5vw, 4rem);">
+                <span class="eyebrow">Why craft, why now</span>
+                <h2>The more digital work becomes, the more this matters.</h2>
+            </div>
+            <div class="cols-3 reveal">
+                <div class="feature">
+                    <span class="feature__num">No. 1</span>
+                    <h3>Focus, restored</h3>
+                    <p>Hands-on craft does what no app can: it slows the nervous system, sharpens attention and clears the mental noise of high-stress, always-on work. The calm is not a metaphor — you feel it in the first hour.</p>
                 </div>
-                <button type="submit" id="mc-embedded-subscribe">Sign up</button>
-            </form>
-            <p id="mc-form-message" style="color:#aaa; font-size:0.8rem; margin-top:1rem; min-height:1.2rem;" aria-live="polite"></p>
-            <p style="color:#555; font-size:0.75rem;">We respect your privacy. Unsubscribe anytime.</p>
+                <div class="feature">
+                    <span class="feature__num">No. 2</span>
+                    <h3>Connection you can hold</h3>
+                    <p>When people make something together, the dynamics of a team become visible — who leads, who listens, how decisions really happen. Our coaching methodology turns that into insight teams take back to work.</p>
+                </div>
+                <div class="feature">
+                    <span class="feature__num">No. 3</span>
+                    <h3>Crafts, kept alive</h3>
+                    <p>In the age of AI, centuries-old crafts are not nostalgia — they are the counterweight. Every booking pays master artisans fairly and gives endangered crafts a living, modern role.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Thank You Popup -->
-    <div id="mc-popup-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center;">
-        <div style="background:#fff; padding:2.5rem 2rem; max-width:400px; width:90%; text-align:center; border-radius:4px; position:relative;">
-            <button onclick="document.getElementById('mc-popup-overlay').style.display='none'" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.3rem; cursor:pointer; color:#aaa;">✕</button>
-            <p style="font-family:'Montserrat',sans-serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:#aaa; margin-bottom:1rem;">Thank you</p>
-            <h3 style="font-family:'Montserrat',sans-serif; font-size:1.1rem; color:#222; margin-bottom:1rem;">Almost there!</h3>
-            <p style="font-size:0.9rem; color:#555; line-height:1.6;">Please check your inbox and click the confirmation link to complete your signup.</p>
-        </div>
-    </div>
-
-    <script>
-    (function() {
-        var form = document.getElementById('mc-embedded-subscribe-form');
-        var emailField = document.getElementById('mce-EMAIL');
-        var msg = document.getElementById('mc-form-message');
-        var submitBtn = document.getElementById('mc-embedded-subscribe');
-        if (!form) return;
-
-        // JSONP endpoint — note /subscribe/post-json (not /post) and &c=? for callback
-        var MC_URL = 'https://outlook.us13.list-manage.com/subscribe/post-json?u=329d7bb0d19143d6361e97af9&id=1495d74d12&f_id=0089c3e1f0';
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // stop the normal form post
-            var email = emailField.value.trim();
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                msg.textContent = 'Please enter a valid email address.';
-                msg.style.color = '#c66';
-                return;
-            }
-
-            msg.textContent = 'Submitting...';
-            msg.style.color = '#aaa';
-            submitBtn.disabled = true;
-
-            // Build the JSONP request
-            var callbackName = 'mcCallback_' + Date.now();
-            var honeypot = form.querySelector('input[name^="b_"]');
-            var url = MC_URL
-                + '&EMAIL=' + encodeURIComponent(email)
-                + '&' + honeypot.name + '=' + encodeURIComponent(honeypot.value)
-                + '&c=' + callbackName;
-
-            var script = document.createElement('script');
-
-            window[callbackName] = function(data) {
-                submitBtn.disabled = false;
-                if (data.result === 'success') {
-                    document.getElementById('mc-popup-overlay').style.display = 'flex';
-                    msg.textContent = '';
-                    form.reset();
-                } else {
-                    // Mailchimp returns HTML in data.msg sometimes; strip tags for safety
-                    var errText = (data.msg || 'Something went wrong. Please try again.').replace(/<[^>]+>/g, '');
-                    // Common case: already subscribed — treat as friendly
-                    if (/already subscribed/i.test(errText)) {
-                        errText = "You're already on the list — check your inbox for previous emails from us.";
-                    }
-                    msg.textContent = errText;
-                    msg.style.color = '#c66';
-                }
-                // cleanup
-                delete window[callbackName];
-                if (script.parentNode) script.parentNode.removeChild(script);
-            };
-
-            script.src = url;
-            script.onerror = function() {
-                submitBtn.disabled = false;
-                msg.textContent = 'Network error. Please try again.';
-                msg.style.color = '#c66';
-                delete window[callbackName];
-            };
-            document.body.appendChild(script);
-        });
-    })();
-    </script>
-
-    <footer id="contact">
-        <div class="container reveal">
-            <h2>CONTACT DETAILS</h2>
-            <p>Still have questions? We'd love to hear from you.</p>
-            <div class="contact-info">
-                <p><strong>Instagram:</strong> <a href="https://www.instagram.com/crafted.visions.travel/" target="_blank" rel="noopener noreferrer" style="color:white;">@crafted.visions.travel</a></p>
-                <p><strong>Email:</strong> <a href="mailto:crafted.visions@outlook.com" style="color:white; text-decoration:none;">crafted.visions@outlook.com</a></p>
-                <p><strong>Phone:</strong> <span style="color:white;">Alice +216 51639199 | Janina +49 152 38418305</span></p>
+    <!-- IMPACT / CSR BAND -->
+    <section class="section section--dark">
+        <div class="container">
+            <div class="cols-2 reveal" style="align-items: center;">
+                <div>
+                    <span class="eyebrow">Impact, built in</span>
+                    <h2>An experience that does good — visibly.</h2>
+                    <p class="lead">Behind every session stands a master artisan practicing a craft at risk of disappearing. Your booking funds their work directly and helps carry their knowledge forward.</p>
+                    <p class="lead">For companies, that makes a Crafted Visions event more than team development: it&rsquo;s a genuine CSR story — social impact and cultural preservation your brand can credibly stand behind, and your people can tell first-hand.</p>
+                    <div class="btn-row" style="margin-top: 2rem;">
+                        <a href="team-buildings.html#impact" class="btn">The CSR angle for companies</a>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat"><div class="stat__num">60+</div><div class="stat__label">Artisan relationships across the Maghreb</div></div>
+                    <div class="stat"><div class="stat__num">4</div><div class="stat__label">Endangered crafts in our program</div></div>
+                    <div class="stat"><div class="stat__num">100%</div><div class="stat__label">Of sessions led by master artisans, paid fairly</div></div>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="js/script.js"></script>
-    <script>
-    // ── Hamburger nav ──
-    (function() {
-        var btn = document.getElementById('nav-hamburger');
-        var links = document.getElementById('nav-links');
-        if (!btn || !links) return;
-        btn.addEventListener('click', function() {
-            var open = links.classList.toggle('open');
-            btn.classList.toggle('open', open);
-            btn.setAttribute('aria-expanded', open);
-            document.body.style.overflow = open ? 'hidden' : '';
-        });
-        links.querySelectorAll('a').forEach(function(a) {
-            a.addEventListener('click', function() {
-                links.classList.remove('open');
-                btn.classList.remove('open');
-                btn.setAttribute('aria-expanded', false);
-                document.body.style.overflow = '';
-            });
-        });
-    })();
+    <!-- SOCIAL PROOF -->
+    <section class="section section--ivory">
+        <div class="container">
+            <div class="center reveal" style="margin-bottom: clamp(2.5rem, 5vw, 4rem);">
+                <span class="eyebrow">From our participants</span>
+                <h2>What people take home.</h2>
+            </div>
+            <div class="quotes reveal">
+                <blockquote class="quote">
+                    <p class="quote__text">&ldquo;I came not knowing what to expect and left with a handmade book, a piece of pottery, new friends and creative inspiration. I&rsquo;ll be back.&rdquo;</p>
+                    <p class="quote__who">Youssef — Tunisia</p>
+                </blockquote>
+                <blockquote class="quote">
+                    <p class="quote__text">&ldquo;Everything was seamless and clearly planned with care. Highly recommended for anyone wanting a deeper cultural experience.&rdquo;</p>
+                    <p class="quote__who">Emma — Germany</p>
+                </blockquote>
+                <blockquote class="quote">
+                    <p class="quote__text">&ldquo;The calligraphy session slowed me down and made me appreciate taking my time. I left feeling lighter, inspired and really grateful.&rdquo;</p>
+                    <p class="quote__who">Hashi — Syria</p>
+                </blockquote>
+            </div>
+        </div>
+    </section>
 
-    // ── Swipeable carousel dot sync ──
-    function initCarouselDots(stripId, dotsId) {
-        var strip = document.getElementById(stripId);
-        var dotsEl = document.getElementById(dotsId);
-        if (!strip || !dotsEl) return;
-        var dots = dotsEl.querySelectorAll('.dot');
-        var items = strip.querySelectorAll('div');
-        var count = items.length;
-        function updateDots() {
-            var idx = Math.round(strip.scrollLeft / strip.offsetWidth);
-            dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
-        }
-        strip.addEventListener('scroll', updateDots, { passive: true });
-        // Touch swipe already handled by scroll-snap; dots sync on scroll
-    }
-    initCarouselDots('collage-carousel', 'collage-dots');
-    initCarouselDots('stories-carousel', 'stories-dots');
-    </script>
+    <!-- PHOTO STRIP -->
+    <div class="strip reveal">
+        <div><img src="images/collage_1.webp" alt="Ceramics workshop in Tunis" loading="lazy"></div>
+        <div><img src="images/collage_2.webp" alt="Weaving on a traditional loom" loading="lazy"></div>
+        <div><img src="images/collage_3.webp" alt="Arabic calligraphy workshop" loading="lazy"></div>
+        <div><img src="images/collage_4.webp" alt="Bookbinding workshop" loading="lazy"></div>
+    </div>
+
+    <!-- RETREATS TEASER -->
+    <section class="section">
+        <div class="container container--narrow center reveal">
+            <span class="eyebrow">On the horizon</span>
+            <h2>Craft retreats — coming 2027.</h2>
+            <p class="lead measure--center">Multi-day immersions in Tunisia&rsquo;s most remarkable places: troglodyte villages, desert light, days structured around craft and reflection. Join the letter below to hear about them first.</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact-footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div>
+                <a href="index.html" class="footer__logo">Crafted <span>Visions</span></a>
+                <p class="footer__tagline">Team-buildings and workshops in Tunis that pair traditional crafts with coaching methodology — and keep endangered crafts alive.</p>
+                <div class="newsletter">
+                    <form data-newsletter class="newsletter__form" novalidate>
+                        <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
+                        <button type="submit">Sign up</button>
+                    </form>
+                    <p class="newsletter__msg" aria-live="polite"></p>
+                </div>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="team-buildings.html">Team-Buildings &amp; Events</a></li>
+                    <li><a href="workshops.html">Individual Workshops</a></li>
+                    <li><a href="workshops.html#calendar">Booking Calendar</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:crafted.visions@outlook.com">crafted.visions@outlook.com</a></li>
+                    <li><a href="https://wa.me/4915238418305" target="_blank" rel="noopener">WhatsApp us</a></li>
+                    <li><a href="https://www.instagram.com/crafted.visions.travel/" target="_blank" rel="noopener">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>&copy; 2026 Crafted Visions · Tunis</span>
+            <span>Made by hand, with method.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
