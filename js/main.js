@@ -1,4 +1,4 @@
-/* Crafted Visions — shared behaviour: nav, reveal, newsletter, forms, FAQ */
+/* Crafted Visions · shared behaviour: nav, reveal, newsletter, forms, FAQ */
 (function () {
     "use strict";
 
@@ -22,25 +22,52 @@
         });
     }
 
-    /* ── Scroll reveal ── */
+    /* ── Scroll reveal ──
+       Elements animate in on scroll, but nothing is ever left invisible:
+       anything already in or above the viewport (including after an anchor
+       jump to #calendar / #inquire / #how) is revealed immediately. */
+    var reveals = document.querySelectorAll(".reveal");
+    function revealInView() {
+        reveals.forEach(function (el) {
+            if (!el.classList.contains("in") &&
+                el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                el.classList.add("in");
+            }
+        });
+    }
     if ("IntersectionObserver" in window) {
-        var io = new IntersectionObserver(function (entries) {
+        var io = new IntersectionObserver(function (entries, obs) {
             entries.forEach(function (e) {
                 if (e.isIntersecting) {
                     e.target.classList.add("in");
-                    io.unobserve(e.target);
+                    obs.unobserve(e.target);
                 }
             });
-        }, { threshold: 0.12 });
-        document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+        }, { threshold: 0.08, rootMargin: "0px 0px -8% 0px" });
+        reveals.forEach(function (el) { io.observe(el); });
+        revealInView();
+        /* Safety net: a geometric check on load, scroll, resize and hash-jump, so a
+           fast scroll or an anchor jump can never leave a section stuck invisible. */
+        var ticking = false;
+        function onScroll() {
+            if (ticking) { return; }
+            ticking = true;
+            window.requestAnimationFrame(function () { revealInView(); ticking = false; });
+        }
+        window.addEventListener("load", revealInView);
+        window.addEventListener("hashchange", revealInView);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll, { passive: true });
     } else {
-        document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+        reveals.forEach(function (el) { el.classList.add("in"); });
     }
 
     /* ── FAQ accordions ── */
     document.querySelectorAll(".faq__q").forEach(function (btn) {
+        btn.setAttribute("aria-expanded", "false");
         btn.addEventListener("click", function () {
-            btn.parentElement.classList.toggle("open");
+            var open = btn.parentElement.classList.toggle("open");
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
         });
     });
 
@@ -66,7 +93,7 @@
             window[cb] = function (data) {
                 btn.disabled = false;
                 if (data.result === "success") {
-                    if (msg) { msg.textContent = "Almost there — check your inbox and confirm your signup."; }
+                    if (msg) { msg.textContent = "Almost there. Check your inbox and confirm your signup."; }
                     form.reset();
                 } else {
                     var err = (data.msg || "Something went wrong. Please try again.").replace(/<[^>]+>/g, "");
@@ -93,7 +120,7 @@
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
-                msg.textContent = "The form is not connected yet — please email us directly at crafted.visions@outlook.com.";
+                msg.textContent = "The form is not connected yet. Please email us directly at crafted.visions@outlook.com.";
                 msg.className = "form__msg form__msg--err";
                 return;
             }
@@ -107,7 +134,7 @@
             }).then(function (res) {
                 btn.disabled = false;
                 if (res.ok) {
-                    msg.textContent = "Thank you — we’ve received your inquiry and will reply within one business day.";
+                    msg.textContent = "Thank you. We’ve received your inquiry and will reply within one business day.";
                     msg.className = "form__msg form__msg--ok";
                     form.reset();
                 } else {

@@ -2,16 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "site",
+      "name": "crafted-visions",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["/private/tmp/claude-501/-Users-alicetsvetkova-Desktop-crafted-visions-website-claude/c9a09e36-0546-4908-853a-f5588eafc475/scratchpad/serve.py"],
-      "port": 4173
-    },
-    {
-      "name": "small-updates-site",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["/private/tmp/claude-501/-Users-alicetsvetkova-Desktop-crafted-visions-website-claude/c5ddd4b8-ed72-442d-ad95-eb5d47994226/scratchpad/serve_small_updates.py"],
-      "port": 8742
+      "runtimeArgs": ["-m", "http.server", "8137"],
+      "port": 8137
     }
   ]
 }
