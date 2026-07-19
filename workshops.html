@@ -6,11 +6,11 @@
     <title>Individual Workshops &amp; Booking Calendar | Crafted Visions</title>
     <meta name="description" content="Ceramics, Arabic calligraphy, bookbinding and carpet weaving with master artisans in Tunis. Small groups, weekly dates. Pick your date in the calendar and book online.">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="css/main.css?v=10">
+    <link rel="stylesheet" href="css/main.css?v=16">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="images/collage_1.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="images/pg_4.webp" fetchpriority="high">
     <meta property="og:title" content="Individual Craft Workshops in Tunis | Crafted Visions">
     <meta property="og:description" content="Slow down and make something that lasts: small-group craft workshops with master artisans. Book your date online.">
     <meta property="og:image" content="https://craftedvisionstravel.com/images/collage_1.webp">
@@ -23,11 +23,12 @@
     <div class="nav__inner">
         <a href="index.html" class="nav__logo">Crafted <span>Visions</span></a>
         <div class="nav__links" id="nav-links">
-            <a href="team-buildings.html" class="nav__link">For Teams</a>
-            <a href="workshops.html" class="nav__link nav__link--active">Workshops</a>
+            <a href="team-buildings.html" class="nav__link">For companies</a>
+            <a href="workshops.html" class="nav__link nav__link--active">For individuals</a>
+            <a href="impact.html" class="nav__link">Impact</a>
             <a href="about.html" class="nav__link">About</a>
             <a href="contact.html" class="nav__link">Contact</a>
-            <a href="team-buildings.html#inquire" class="btn btn--small nav__cta">Plan a team event</a>
+            <a href="team-buildings.html#inquire" class="btn btn--small nav__cta">Plan a team building</a>
         </div>
         <button class="nav__burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -38,7 +39,7 @@
 <main>
 
     <!-- HERO -->
-    <header class="hero hero--short" style="background-image: url('images/collage_1.webp');">
+    <header class="hero hero--short" style="background-image: url('images/pg_4.webp'); background-position: center 58%;">
         <div class="container">
             <div class="hero__content">
                 <span class="eyebrow">Individual Workshops · Tunis</span>
@@ -61,7 +62,7 @@
                 <p class="lead">Every session is hands-on from the first minute, capped at six participants, and led by an artisan who has practiced their craft for a lifetime. 49&nbsp;&euro; per person, everything included.</p>
             </div>
             <div class="ws-grid reveal">
-                <a href="#calendar" class="ws">
+                <a href="craft-ceramics.html" class="ws">
                     <div class="ws__img"><img src="images/opt/atelier-poterie.webp" alt="Traditional ceramics workshop" loading="lazy"><span class="ws__dot c-ceramics"></span></div>
                     <div class="ws__body">
                         <h3>Traditional Ceramics</h3>
@@ -69,7 +70,7 @@
                         <p>Shape clay the way it has been shaped here for centuries. Slow, tactile and deeply grounding.</p>
                     </div>
                 </a>
-                <a href="#calendar" class="ws">
+                <a href="craft-calligraphy.html" class="ws">
                     <div class="ws__img"><img src="images/calligraphy.webp" alt="Arabic calligraphy workshop" loading="lazy"><span class="ws__dot c-calligraphy"></span></div>
                     <div class="ws__body">
                         <h3>Arabic Calligraphy</h3>
@@ -77,7 +78,7 @@
                         <p>Stroke by stroke, a meditative practice of precision, rhythm and meaning with a master calligrapher.</p>
                     </div>
                 </a>
-                <a href="#calendar" class="ws">
+                <a href="craft-bookbinding.html" class="ws">
                     <div class="ws__img"><img src="images/book-binding.webp" alt="Bookbinding workshop" loading="lazy"><span class="ws__dot c-bookbinding"></span></div>
                     <div class="ws__body">
                         <h3>Bookbinding</h3>
@@ -85,7 +86,7 @@
                         <p>Fold, stitch and press your own book with one of the last traditional bookbinders in Tunis.</p>
                     </div>
                 </a>
-                <a href="#calendar" class="ws">
+                <a href="craft-weaving.html" class="ws">
                     <div class="ws__img"><img src="images/opt/atelier-tissage.webp" alt="Carpet weaving workshop" loading="lazy"><span class="ws__dot c-weaving"></span></div>
                     <div class="ws__body">
                         <h3>Carpet Weaving</h3>
@@ -185,6 +186,8 @@
                 <a href="index.html" class="footer__logo">Crafted <span>Visions</span></a>
                 <p class="footer__tagline">Team-buildings and workshops in Tunis that pair traditional crafts with coaching methodology, and keep endangered crafts alive.</p>
                 <div class="newsletter">
+                    <h4 class="newsletter__title">Newsletter</h4>
+                    <p class="newsletter__intro">Stories from the atelier, new workshop dates and the first word on our craft retreats, a few times a year. No spam.</p>
                     <form data-newsletter class="newsletter__form" novalidate>
                         <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
                         <button type="submit">Sign up</button>
@@ -198,6 +201,7 @@
                     <li><a href="team-buildings.html">Team-Buildings &amp; Events</a></li>
                     <li><a href="workshops.html">Individual Workshops</a></li>
                     <li><a href="workshops.html#calendar">Booking Calendar</a></li>
+                    <li><a href="impact.html">Impact</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -225,6 +229,6 @@
 
 <script src="js/schedule.js?v=9"></script>
 <script src="js/calendar.js?v=9"></script>
-<script src="js/main.js?v=9"></script>
+<script src="js/main.js?v=12"></script>
 </body>
 </html>

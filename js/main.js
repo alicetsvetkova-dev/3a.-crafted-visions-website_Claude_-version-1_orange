@@ -148,4 +148,48 @@
             });
         });
     });
+
+    /* ── Email links: always copy the address + confirm, and still open the
+       user's mail app if one is set (so a click is never a dead end) ── */
+    var toast;
+    function showToast(text) {
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.className = "cv-toast";
+            toast.setAttribute("role", "status");
+            document.body.appendChild(toast);
+        }
+        toast.textContent = text;
+        toast.classList.add("show");
+        clearTimeout(toast._t);
+        toast._t = setTimeout(function () { toast.classList.remove("show"); }, 2600);
+    }
+    function fallbackCopy(text) {
+        try {
+            var ta = document.createElement("textarea");
+            ta.value = text; ta.setAttribute("readonly", "");
+            ta.style.position = "absolute"; ta.style.left = "-9999px";
+            document.body.appendChild(ta); ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+        } catch (e) { /* clipboard not available */ }
+    }
+    function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text)["catch"](function () { fallbackCopy(text); });
+        } else {
+            fallbackCopy(text);
+        }
+    }
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+        a.addEventListener("click", function () {
+            /* Let the mailto open the user's mail app (the expected behaviour).
+               We also copy the address silently and confirm, so anyone without a
+               mail app configured still gets the address and clear feedback
+               instead of a dead click. */
+            var email = a.getAttribute("href").replace(/^mailto:/i, "").split("?")[0];
+            copyText(email);
+            showToast("Email address copied: " + email);
+        });
+    });
 })();
