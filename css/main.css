@@ -107,6 +107,18 @@ h3 { font-size: var(--fs-h3); }
 .btn--small { padding: 11px 22px; font-size: 0.72rem; }
 .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn-row--center { justify-content: center; }
+/* Two equal-size buttons side by side (one may wrap to two lines) */
+.btn-row--split { max-width: 680px; align-items: stretch; }
+.btn-row--split .btn {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-left: 22px;
+    padding-right: 22px;
+    line-height: 1.3;
+}
 
 .text-link {
     color: var(--clay);
