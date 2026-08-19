@@ -774,6 +774,14 @@ main { padding-top: var(--nav-h); }
 }
 
 @media (max-width: 860px) {
+    /* Drop backdrop-filter on mobile: an ancestor with backdrop-filter becomes
+       the containing block for position:fixed children, which would trap the
+       fullscreen menu inside the 75px nav bar. Keep a near-opaque background. */
+    .nav {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: var(--paper);
+    }
     .nav__burger { display: flex; }
     .nav__links {
         display: none;
