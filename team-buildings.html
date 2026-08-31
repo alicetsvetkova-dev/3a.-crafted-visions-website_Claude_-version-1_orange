@@ -6,11 +6,11 @@
     <title>Team-Buildings &amp; Corporate Events | Crafted Visions</title>
     <meta name="description" content="Coaching-based team-buildings in artisan ateliers in Tunis or at your venue. Collaboration, communication and intercultural competence, with a CSR story your company can stand behind.">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="css/main.css?v=18">
+    <link rel="stylesheet" href="css/main.css?v=20">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="images/teambuilding-companies.jpg?v=2" fetchpriority="high">
+    <link rel="preload" as="image" href="images/teambuilding-companies.jpg?v=3" fetchpriority="high">
     <meta property="og:title" content="Team-Buildings &amp; Corporate Events | Crafted Visions">
     <meta property="og:description" content="Team development your people will still talk about in a year: crafts, coaching methodology and a genuine CSR story.">
     <meta property="og:image" content="https://craftedvisionstravel.com/images/opt/atelier-tissage.webp">
@@ -39,7 +39,7 @@
 <main>
 
     <!-- HERO -->
-    <header class="hero hero--short" style="background-image: url('images/teambuilding-companies.jpg?v=2'); background-position: center 30%; min-height: 84vh;">
+    <header class="hero hero--short" style="background-image: url('images/teambuilding-companies.jpg?v=3'); background-position: center 30%; min-height: 84vh;">
         <div class="container">
             <div class="hero__content">
                 <span class="eyebrow">Team-Buildings &amp; Corporate Events</span>
@@ -96,7 +96,7 @@
             </div>
             <div class="exp-grid reveal">
                 <article class="exp">
-                    <div class="exp__img"><img src="images/opt/atelier-tissage.webp" alt="Weaving a carpet on a traditional loom" loading="lazy"></div>
+                    <div class="exp__img"><img decoding="async" src="images/opt/atelier-tissage.webp" alt="Weaving a carpet on a traditional loom" loading="lazy"></div>
                     <div class="exp__body">
                         <p class="exp__tag">Collaboration</p>
                         <h3>The Loom: Team Weaving</h3>
@@ -104,7 +104,7 @@
                     </div>
                 </article>
                 <article class="exp">
-                    <div class="exp__img"><img src="images/opt/atelier-poterie.webp" alt="Ceramics workshop in pairs" loading="lazy"></div>
+                    <div class="exp__img"><img decoding="async" src="images/opt/atelier-poterie.webp" alt="Ceramics workshop in pairs" loading="lazy"></div>
                     <div class="exp__body">
                         <p class="exp__tag">Communication</p>
                         <h3>Back to Back: Ceramics in Pairs</h3>
@@ -112,7 +112,7 @@
                     </div>
                 </article>
                 <article class="exp">
-                    <div class="exp__img"><img src="images/calligraphy.webp" alt="Arabic calligraphy exercise" loading="lazy"></div>
+                    <div class="exp__img"><img decoding="async" src="images/calligraphy.webp" alt="Arabic calligraphy exercise" loading="lazy"></div>
                     <div class="exp__body">
                         <p class="exp__tag">Problem-solving</p>
                         <h3>Beautiful Mistakes: Calligraphy</h3>
@@ -120,7 +120,7 @@
                     </div>
                 </article>
                 <article class="exp">
-                    <div class="exp__img"><img src="images/mosaic.jpg" alt="Hands setting mosaic tiles into a pattern" loading="lazy"></div>
+                    <div class="exp__img"><img decoding="async" src="images/mosaic.jpg" alt="Hands setting mosaic tiles into a pattern" loading="lazy"></div>
                     <div class="exp__body">
                         <p class="exp__tag">Shared vision</p>
                         <h3>The Mosaic: Team Collage</h3>
@@ -168,7 +168,7 @@
             </div>
             <figure class="reveal" style="margin-top: clamp(3rem, 6vw, 5rem); margin-bottom: 0;">
                 <div style="overflow: hidden;">
-                    <img src="images/venue-elspace.jpg" alt="A curated creative hub in Sidi Bou Sa&iuml;d, Tunis: kilim seating, historic stone columns and a glass-walled meeting room, set up for company events" loading="lazy" style="width: 100%; height: clamp(300px, 52vh, 560px); object-fit: cover;">
+                    <img decoding="async" src="images/venue-elspace.jpg" alt="A curated creative hub in Sidi Bou Sa&iuml;d, Tunis: kilim seating, historic stone columns and a glass-walled meeting room, set up for company events" loading="lazy" style="width: 100%; height: clamp(300px, 52vh, 560px); object-fit: cover;">
                 </div>
                 <figcaption style="margin-top: 0.9rem; font-size: 0.85rem; color: var(--muted); letter-spacing: 0.02em;">One of our curated venues: a creative hub in Sidi Bou Sa&iuml;d, Tunis, ready for company gatherings, workshops and off-sites.</figcaption>
             </figure>
@@ -213,18 +213,19 @@
                         <li>Tailored proposal and quote per request</li>
                     </ul>
                 </div>
-                <!--
-                    REEL: point href to the specific Instagram reel you want featured
-                    (e.g. https://www.instagram.com/reel/XXXXXXXXX/). It links to the
-                    profile until then. Swap reel__poster for a still from that reel.
-                -->
-                <a class="reel" href="https://www.instagram.com/crafted.visions.travel/" target="_blank" rel="noopener" aria-label="Watch a session on Instagram">
-                    <img class="reel__poster" src="images/collage_1.webp" alt="A Crafted Visions craft session in Tunis" loading="lazy">
-                    <span class="reel__play" aria-hidden="true"></span>
-                    <span class="reel__label">See a session
-                        <em>in motion</em>
-                    </span>
-                </a>
+                <!-- REEL: click the poster to play the self-hosted video inline (no Instagram redirect).
+                     To change it, swap videos/session-reel.mp4 and the poster image below. -->
+                <div class="reel reel--video">
+                    <video class="reel__video" playsinline preload="none" poster="images/collage_1.webp">
+                        <source src="videos/session-reel.mp4?v=1" type="video/mp4">
+                    </video>
+                    <button class="reel__trigger" type="button" aria-label="Play: see a session in motion">
+                        <span class="reel__play" aria-hidden="true"></span>
+                        <span class="reel__label">See a session
+                            <em>in motion</em>
+                        </span>
+                    </button>
+                </div>
             </div>
             <div class="quotes reveal" style="margin-top: clamp(2.5rem, 5vw, 4rem);">
                 <blockquote class="quote">
@@ -362,6 +363,6 @@
     </div>
 </footer>
 
-<script src="js/main.js?v=12"></script>
+<script src="js/main.js?v=13"></script>
 </body>
 </html>

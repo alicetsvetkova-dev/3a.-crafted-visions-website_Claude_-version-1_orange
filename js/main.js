@@ -192,4 +192,17 @@
             showToast("Email address copied: " + email);
         });
     });
+
+    /* ── Inline reel: click the poster to play the video in place (no redirect) ── */
+    document.querySelectorAll(".reel--video").forEach(function (reel) {
+        var video = reel.querySelector(".reel__video");
+        var trigger = reel.querySelector(".reel__trigger");
+        if (!video || !trigger) { return; }
+        trigger.addEventListener("click", function () {
+            video.controls = true;
+            reel.classList.add("reel--playing");
+            var p = video.play();
+            if (p && p["catch"]) { p["catch"](function () { video.controls = true; }); }
+        });
+    });
 })();

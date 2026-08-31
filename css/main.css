@@ -329,6 +329,22 @@ main { padding-top: var(--nav-h); }
     transition: transform 0.7s ease;
 }
 .reel:hover .reel__poster { transform: scale(1.04); }
+/* Inline video reel (click the poster to play, no external redirect) */
+.reel__video {
+    position: absolute; inset: 0; z-index: -2;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    background: var(--ink);
+}
+.reel__trigger {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    background: none; border: none; padding: 0;
+    cursor: pointer; color: #fff; font: inherit;
+}
+.reel--playing::before { display: none; }
+.reel--playing .reel__trigger { display: none; }
+.reel--playing .reel__video { z-index: 1; object-fit: contain; background: #000; }
 .reel::before {
     content: "";
     position: absolute; inset: 0; z-index: -1;
@@ -687,7 +703,7 @@ main { padding-top: var(--nav-h); }
 
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: 1fr 0.85fr; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: center; }
-.about-grid img { width: 100%; height: 100%; max-height: 560px; object-fit: cover; }
+.about-grid img { width: 100%; height: auto; display: block; }
 .signature { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--clay); }
 
 /* ---------- Legal / long-form pages ---------- */
@@ -787,14 +803,36 @@ main { padding-top: var(--nav-h); }
         display: none;
         position: fixed;
         inset: 0;
-        background: var(--paper);
+        background: rgba(250, 248, 244, 0.98);
         flex-direction: column;
         justify-content: center;
-        gap: 2.2rem;
+        gap: 2rem;
         z-index: 1001;
     }
     .nav__links.open { display: flex; }
-    .nav__link { font-size: 1.05rem; }
+    /* Refined, airy menu links (mirrors the live site's menu typography) */
+    .nav__link {
+        font-size: 0.8rem;
+        font-weight: 400;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        padding: 0.4rem 0;
+    }
+    .nav__link--active { color: var(--clay); }
+    /* CTA becomes an elegant inline link (not the full-width orange bar) */
+    .nav__links .nav__cta {
+        width: auto;
+        margin: 0.3rem 0 0;
+        padding: 0;
+        background: none;
+        border: none;
+        color: var(--clay);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+    }
 
     .paths { grid-template-columns: 1fr; }
     .path { min-height: 420px; padding: 2rem; }
@@ -802,7 +840,7 @@ main { padding-top: var(--nav-h); }
     .form { grid-template-columns: 1fr; }
     .footer__grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-grid { grid-template-columns: 1fr; }
-    .about-grid img { order: -1; max-height: 60vw; }
+    .about-grid img { order: -1; }
     .strip { grid-template-columns: 1fr 1fr; grid-auto-rows: 38vw; height: auto; }
     .strip > div:nth-child(n+5) { display: none; }
     .hero { min-height: 78vh; }

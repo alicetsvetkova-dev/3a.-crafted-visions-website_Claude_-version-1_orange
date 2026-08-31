@@ -1,1 +1,5 @@
 .DS_Store
+
+# Source video files (transcoded to videos/*.mp4)
+*.MOV
+*.mov
