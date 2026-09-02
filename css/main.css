@@ -310,6 +310,27 @@ main { padding-top: var(--nav-h); }
 .section--dark .quote { background: var(--dark-2); border-color: var(--dark-line); }
 .section--dark .quote__text { color: var(--on-dark); }
 .section--dark .quote__who { color: var(--on-dark-muted); }
+/* Testimonial cards with a subtle participant photo behind the text (credibility) */
+.quote--photo {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center 22%;
+    background-repeat: no-repeat;
+}
+.quote--photo::before {
+    content: "";
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg,
+        rgba(252,250,245,0.74) 0%,
+        rgba(252,250,245,0.66) 50%,
+        rgba(252,250,245,0.56) 100%);
+}
+.quote--photo .quote__who { color: var(--ink); }
+/* Keep the dark text crisp over the more-visible photo */
+.quote--photo .quote__text,
+.quote--photo .quote__who { text-shadow: 0 1px 3px rgba(252,250,245,0.9); }
 
 /* ---------- Reel card (Instagram video teaser) ---------- */
 .reel {

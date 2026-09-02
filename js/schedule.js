@@ -47,7 +47,7 @@ var CV_BOOKING = {
             facts: [
                 "3 hours · working pottery atelier",
                 "Small group · max 6 participants",
-                "All materials, snacks & drinks included",
+                "All materials included",
                 "No experience needed · English & French"
             ],
             booked: {},
@@ -67,7 +67,7 @@ var CV_BOOKING = {
             facts: [
                 "3 hours · historic atelier in the Medina",
                 "Small group · max 6 participants",
-                "All materials, snacks & drinks included",
+                "All materials included",
                 "No experience needed · English & French"
             ],
             booked: {},
@@ -87,7 +87,7 @@ var CV_BOOKING = {
             facts: [
                 "3 hours · atelier in Tunis",
                 "Small group · max 6 participants",
-                "All materials, snacks & drinks included",
+                "All materials included",
                 "No experience needed · English & French"
             ],
             booked: {},
@@ -107,7 +107,7 @@ var CV_BOOKING = {
             facts: [
                 "4 hours · weaving atelier",
                 "Small group · max 6 participants",
-                "All materials, snacks & drinks included",
+                "All materials included",
                 "No experience needed · English & French"
             ],
             booked: {},
