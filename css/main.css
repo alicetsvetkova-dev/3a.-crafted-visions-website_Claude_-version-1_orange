@@ -205,6 +205,7 @@ main { padding-top: var(--nav-h); }
     min-height: calc(92vh - var(--nav-h));
     display: flex;
     align-items: center;
+    background-color: var(--dark);
     background-size: cover;
     background-position: center;
     color: #fff;
