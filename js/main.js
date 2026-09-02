@@ -73,10 +73,43 @@
 
     /* ── Newsletter (Mailchimp JSONP) ── */
     var MC_URL = "https://outlook.us13.list-manage.com/subscribe/post-json?u=329d7bb0d19143d6361e97af9&id=1495d74d12&f_id=0089c3e1f0";
+    var MC_HONEYPOT = "b_329d7bb0d19143d6361e97af9_1495d74d12";
+
+    /* Thank-you popup — injected once, reused across every page's footer form */
+    function mcPopup() {
+        var el = document.getElementById("mc-popup");
+        if (el) { return el; }
+        el = document.createElement("div");
+        el.id = "mc-popup";
+        el.className = "mc-popup";
+        el.hidden = true;
+        el.innerHTML =
+            '<div class="mc-popup__box" role="dialog" aria-modal="true" aria-labelledby="mc-popup-title">' +
+                '<button class="mc-popup__close" type="button" aria-label="Close">×</button>' +
+                '<p class="mc-popup__eyebrow">Thank you</p>' +
+                '<h3 class="mc-popup__title" id="mc-popup-title">Almost there</h3>' +
+                '<p class="mc-popup__text">Please check your inbox and click the confirmation link to complete your signup.</p>' +
+            '</div>';
+        document.body.appendChild(el);
+        function close() { el.hidden = true; }
+        el.querySelector(".mc-popup__close").addEventListener("click", close);
+        el.addEventListener("click", function (e) { if (e.target === el) { close(); } });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !el.hidden) { close(); } });
+        return el;
+    }
+
     document.querySelectorAll("form[data-newsletter]").forEach(function (form) {
         var email = form.querySelector("input[type=email]");
         var msg = form.parentElement.querySelector(".newsletter__msg");
         var btn = form.querySelector("button");
+        /* Bot protection: inject the Mailchimp honeypot if it isn't in the markup */
+        if (!form.querySelector('input[name="' + MC_HONEYPOT + '"]')) {
+            var hp = document.createElement("div");
+            hp.setAttribute("aria-hidden", "true");
+            hp.style.cssText = "position:absolute; left:-5000px;";
+            hp.innerHTML = '<input type="text" name="' + MC_HONEYPOT + '" tabindex="-1" value="" autocomplete="off">';
+            form.appendChild(hp);
+        }
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             var val = email.value.trim();
@@ -86,15 +119,18 @@
             }
             if (msg) { msg.textContent = "Submitting…"; }
             btn.disabled = true;
+            var hpField = form.querySelector('input[name="' + MC_HONEYPOT + '"]');
             var cb = "mcCallback_" + Date.now();
             var url = MC_URL + "&EMAIL=" + encodeURIComponent(val) +
-                "&b_329d7bb0d19143d6361e97af9_1495d74d12=&c=" + cb;
+                "&" + MC_HONEYPOT + "=" + encodeURIComponent(hpField ? hpField.value : "") +
+                "&c=" + cb;
             var script = document.createElement("script");
             window[cb] = function (data) {
                 btn.disabled = false;
                 if (data.result === "success") {
-                    if (msg) { msg.textContent = "Almost there. Check your inbox and confirm your signup."; }
+                    if (msg) { msg.textContent = ""; }
                     form.reset();
+                    mcPopup().hidden = false;
                 } else {
                     var err = (data.msg || "Something went wrong. Please try again.").replace(/<[^>]+>/g, "");
                     if (/already subscribed/i.test(err)) { err = "You’re already on the list."; }
