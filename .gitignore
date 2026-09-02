@@ -3,3 +3,7 @@
 # Source video files (transcoded to videos/*.mp4)
 *.MOV
 *.mov
+
+# Local dev deps and archived snapshot (kept locally, not published)
+pydeps/
+Website Deep petrol teal/
