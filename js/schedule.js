@@ -122,8 +122,7 @@ var CV_BOOKING = {
             start: "10:00",
             end: "12:30",
             price: "49 €",
-            /* PLACEHOLDER image — replace with the real Ebru photo when provided */
-            image: "images/opt/authentic-details.webp",
+            image: "images/opt/ebru-marbling.webp",
             desc: "Float colour on water and lift it onto paper: the mesmerising art of marbling. Every sheet is unrepeatable, and yours to keep.",
             facts: [
                 "2.5 hours · marbling atelier in Tunis",
