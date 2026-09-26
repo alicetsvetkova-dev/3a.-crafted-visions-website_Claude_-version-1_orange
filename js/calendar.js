@@ -50,7 +50,12 @@
             if (w.except && w.except.indexOf(key) !== -1) { return false; }
             if (w.extra && w.extra.indexOf(key) !== -1) { return true; }
             return w.weekdays.indexOf(d.getDay()) !== -1;
-        }).sort(function (a, b) { return a.start < b.start ? -1 : 1; });
+        }).sort(function (a, b) {
+            /* Guided Medina Tour is a tour, not a workshop — always list it last */
+            var aM = a.id === "medina-tour", bM = b.id === "medina-tour";
+            if (aM !== bM) { return aM ? 1 : -1; }
+            return a.start < b.start ? -1 : 1;
+        });
     }
 
     /* Exact start moment of a session on a given date */

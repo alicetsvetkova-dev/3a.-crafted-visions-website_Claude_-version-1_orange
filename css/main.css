@@ -678,12 +678,12 @@ main { padding-top: var(--nav-h); }
 
 /* Craft colors (calendar dots + workshop cards) */
 .c-ceramics { background: #a4562e; }
-.c-calligraphy { background: #37547a; }
+.c-calligraphy { background: #1b1813; }
 .c-bookbinding { background: #6d7a46; }
 .c-weaving { background: #96683a; }
-.c-mosaic { background: #2f7d78; }
+.c-mosaic { background: #c17b8a; }
 .c-ebru { background: #7a4a8f; }
-.c-medina { background: #b07d2b; }
+.c-medina { background: #d9a92e; }
 
 /* ---------- Workshop cards (B2C lineup) ---------- */
 .ws-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
@@ -703,6 +703,7 @@ main { padding-top: var(--nav-h); }
 .ws__body { padding: 1.4rem 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
 .ws h3 { font-size: 1.18rem; margin-bottom: 0.35rem; }
 .ws .ws__sched { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.7rem; }
+.ws .ws__time { display: block; white-space: nowrap; margin-top: 0.15rem; }
 .ws p { font-size: 0.88rem; color: var(--ink-soft); margin: 0; flex: 1; }
 
 /* ---------- FAQ / practical details ---------- */
