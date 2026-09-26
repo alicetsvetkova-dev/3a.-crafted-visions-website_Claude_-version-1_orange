@@ -2,6 +2,15 @@
 (function () {
     "use strict";
 
+    /* ── WhatsApp: assemble the number at runtime so it is never in the page source for scrapers ── */
+    (function () {
+        var num = ["491", "768", "736", "1752"].join("");
+        document.querySelectorAll("a[data-wa]").forEach(function (a) {
+            var text = a.getAttribute("data-wa-text");
+            a.setAttribute("href", "https://wa.me/" + num + (text ? "?text=" + text : ""));
+        });
+    })();
+
     /* ── Mobile nav ── */
     var burger = document.getElementById("nav-burger");
     var links = document.getElementById("nav-links");
