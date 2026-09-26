@@ -48,7 +48,7 @@ var CV_BOOKING = {
                 "3 hours · working pottery atelier",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · English & French"
+                "No experience needed · French"
             ],
             booked: {},
             except: [],
@@ -68,7 +68,7 @@ var CV_BOOKING = {
                 "3 hours · historic atelier in the Medina",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · English & French"
+                "No experience needed · French"
             ],
             booked: {},
             except: [],
@@ -88,7 +88,7 @@ var CV_BOOKING = {
                 "3 hours · atelier in Tunis",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · English & French"
+                "No experience needed · French"
             ],
             booked: {},
             except: [],
@@ -108,7 +108,7 @@ var CV_BOOKING = {
                 "3 hours · mosaic atelier in Tunis",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · English & French"
+                "No experience needed · French"
             ],
             booked: {},
             except: [],
@@ -118,17 +118,17 @@ var CV_BOOKING = {
             id: "ebru",
             name: "Ebru · Paper Marbling",
             colorClass: "c-ebru",
-            weekdays: [0], /* Sunday — PLACEHOLDER: confirm the real day(s) & time */
-            start: "10:00",
-            end: "12:30",
+            weekdays: [4, 5, 6], /* Thursday, Friday & Saturday — same as Bookbinding */
+            start: "15:00",
+            end: "18:00",
             price: "49 €",
-            image: "images/opt/ebru-marbling.webp",
+            image: "images/opt/ebru-marbling.jpg",
             desc: "Float colour on water and lift it onto paper: the mesmerising art of marbling. Every sheet is unrepeatable, and yours to keep.",
             facts: [
-                "2.5 hours · marbling atelier in Tunis",
+                "3 hours · marbling atelier in Tunis",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · English & French"
+                "No experience needed · French"
             ],
             booked: {},
             except: [],
