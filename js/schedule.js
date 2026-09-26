@@ -95,26 +95,8 @@ var CV_BOOKING = {
             except: [],
             extra: []
         },
-        {
-            id: "mosaic",
-            name: "Mosaic",
-            colorClass: "c-mosaic",
-            weekdays: [6], /* Saturday — PLACEHOLDER: confirm the real day(s) & time */
-            start: "10:00",
-            end: "13:00",
-            price: "49 €",
-            image: "images/opt/mosaic-workshop.jpg",
-            desc: "Set stone and ceramic piece by piece into a pattern of your own, an art Tunisia has practiced since antiquity. You take home the piece you made.",
-            facts: [
-                "3 hours · mosaic atelier in Tunis",
-                "Small group · max 6 participants",
-                "All materials included",
-                "No experience needed · French"
-            ],
-            booked: {},
-            except: [],
-            extra: []
-        },
+        /* Mosaic is offered on request (not a fixed weekly slot), so it is not
+           listed in the booking calendar. Its card links to an enquiry instead. */
         {
             id: "ebru",
             name: "Ebru · Paper Marbling",
