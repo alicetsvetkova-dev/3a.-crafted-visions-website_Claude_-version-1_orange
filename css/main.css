@@ -205,6 +205,7 @@ main { padding-top: var(--nav-h); }
     min-height: calc(92vh - var(--nav-h));
     display: flex;
     align-items: center;
+    padding: clamp(2.25rem, 5vh, 4rem) 0;
     background-color: var(--dark);
     background-size: cover;
     background-position: center;
@@ -428,6 +429,7 @@ main { padding-top: var(--nav-h); }
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 3rem); counter-reset: step; }
 .step { border-top: 1px solid var(--line); padding-top: 1.5rem; }
 .section--dark .step { border-color: var(--dark-line); }
+.how-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin: 0 0 0.9rem; }
 .step h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
 .step p { font-size: 0.93rem; color: var(--ink-soft); margin: 0; }
 .section--dark .step p { color: var(--on-dark-muted); }
@@ -679,9 +681,12 @@ main { padding-top: var(--nav-h); }
 .c-calligraphy { background: #37547a; }
 .c-bookbinding { background: #6d7a46; }
 .c-weaving { background: #96683a; }
+.c-mosaic { background: #2f7d78; }
+.c-ebru { background: #7a4a8f; }
+.c-medina { background: #b07d2b; }
 
 /* ---------- Workshop cards (B2C lineup) ---------- */
-.ws-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+.ws-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .ws {
     background: var(--card);
     border: 1px solid var(--line);
@@ -699,6 +704,8 @@ main { padding-top: var(--nav-h); }
 .ws h3 { font-size: 1.18rem; margin-bottom: 0.35rem; }
 .ws__sched { font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.7rem; }
 .ws p { font-size: 0.88rem; color: var(--ink-soft); margin: 0; flex: 1; }
+.ws__badge { display: inline-block; align-self: flex-start; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: #b07d2b; padding: 0.28rem 0.6rem; border-radius: 999px; margin-bottom: 0.7rem; }
+.ws--tour { border: 1px solid var(--line); }
 
 /* ---------- FAQ / practical details ---------- */
 .faq { border-top: 1px solid var(--line); }
@@ -934,5 +941,14 @@ main { padding-top: var(--nav-h); }
     color: var(--ink-soft);
     margin: 0;
 }
+.mc-popup__note {
+    margin: 0.9rem 0 0;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--muted);
+}
+.mc-popup__note strong { color: var(--ink-soft); }
 @keyframes mc-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes mc-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }

@@ -89,6 +89,7 @@
                 '<p class="mc-popup__eyebrow">Thank you</p>' +
                 '<h3 class="mc-popup__title" id="mc-popup-title">Almost there</h3>' +
                 '<p class="mc-popup__text">Please check your inbox and click the confirmation link to complete your signup.</p>' +
+                '<p class="mc-popup__note">Don&rsquo;t see it? Please check your <strong>spam or junk</strong> folder.</p>' +
             '</div>';
         document.body.appendChild(el);
         function close() { el.hidden = true; }

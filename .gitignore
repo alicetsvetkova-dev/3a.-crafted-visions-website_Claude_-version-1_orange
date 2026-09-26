@@ -7,3 +7,6 @@
 # Local dev deps and archived snapshot (kept locally, not published)
 pydeps/
 Website Deep petrol teal/
+
+# Claude Code session outputs (local only)
+Claude outputs/

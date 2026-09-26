@@ -30,7 +30,7 @@ var CV_BOOKING = {
     /* Stripe checkout, the workshop and date are confirmed at checkout */
     stripeUrl: "https://buy.stripe.com/6oU00l9cY0C66ys8II53O08",
     /* Where waitlist / "ask for a different workshop" requests go */
-    whatsapp: "4915238418305",
+    whatsapp: "4917687361752",
     email: "crafted.visions@outlook.com",
 
     workshops: [
@@ -95,20 +95,61 @@ var CV_BOOKING = {
             extra: []
         },
         {
-            id: "weaving",
-            name: "Carpet Weaving",
-            colorClass: "c-weaving",
-            weekdays: [0], /* Sunday — PLACEHOLDER: confirm the real day(s) & time */
+            id: "mosaic",
+            name: "Mosaic",
+            colorClass: "c-mosaic",
+            weekdays: [6], /* Saturday — PLACEHOLDER: confirm the real day(s) & time */
             start: "10:00",
-            end: "14:00",
+            end: "13:00",
             price: "49 €",
-            image: "images/opt/atelier-tissage.webp",
-            desc: "Work a traditional loom side by side with a weaver, wool, knots, pattern and patience. The craft our whole story began with.",
+            image: "images/opt/mosaic-workshop.jpg",
+            desc: "Set stone and ceramic piece by piece into a pattern of your own, an art Tunisia has practiced since antiquity. You take home the piece you made.",
             facts: [
-                "4 hours · weaving atelier",
+                "3 hours · mosaic atelier in Tunis",
                 "Small group · max 6 participants",
                 "All materials included",
                 "No experience needed · English & French"
+            ],
+            booked: {},
+            except: [],
+            extra: []
+        },
+        {
+            id: "ebru",
+            name: "Ebru · Paper Marbling",
+            colorClass: "c-ebru",
+            weekdays: [0], /* Sunday — PLACEHOLDER: confirm the real day(s) & time */
+            start: "10:00",
+            end: "12:30",
+            price: "49 €",
+            /* PLACEHOLDER image — replace with the real Ebru photo when provided */
+            image: "images/opt/authentic-details.webp",
+            desc: "Float colour on water and lift it onto paper: the mesmerising art of marbling. Every sheet is unrepeatable, and yours to keep.",
+            facts: [
+                "2.5 hours · marbling atelier in Tunis",
+                "Small group · max 6 participants",
+                "All materials included",
+                "No experience needed · English & French"
+            ],
+            booked: {},
+            except: [],
+            extra: []
+        },
+        {
+            id: "medina-tour",
+            name: "Guided Medina Tour",
+            colorClass: "c-medina",
+            weekdays: [6, 0], /* Saturday & Sunday — from the live site; confirm before launch */
+            start: "09:00",
+            end: "10:30",
+            price: "39 €",
+            image: "images/opt/medina-gate.jpg",
+            desc: "Explore the Medina through the eyes of someone who truly knows it: hidden corners, living craftsmanship and stories off the tourist trail.",
+            facts: [
+                "1.5 hours · guided walking tour",
+                "Small group",
+                "Meeting point shared on booking",
+                "English & French"
             ],
             booked: {},
             except: [],
