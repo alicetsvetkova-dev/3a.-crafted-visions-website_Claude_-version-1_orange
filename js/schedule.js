@@ -125,6 +125,8 @@ var CV_BOOKING = {
             start: "09:00",
             end: "10:30",
             price: "39 €",
+            /* Medina tour has its own dedicated 39 € Stripe link (from the July 2026 site) */
+            stripeUrl: "https://buy.stripe.com/fZu00l3SEdoSf4Y0cc53O0a",
             image: "images/opt/medina-gate.jpg",
             desc: "Explore the Medina through the eyes of someone who truly knows it: hidden corners, living craftsmanship and stories off the tourist trail.",
             facts: [
