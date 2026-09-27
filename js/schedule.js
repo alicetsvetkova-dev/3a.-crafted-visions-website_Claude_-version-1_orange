@@ -46,10 +46,10 @@ var CV_BOOKING = {
             image: "images/opt/atelier-poterie.webp",
             desc: "Shape clay the way it has been shaped here for centuries, guided by a master ceramicist. Slow, tactile and grounding, you take home the piece you made.",
             facts: [
-                "3 hours · working pottery atelier",
+                "3 hours · working pottery atelier · in French",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · French"
+                "All levels welcome"
             ],
             booked: {},
             except: [],
@@ -61,15 +61,15 @@ var CV_BOOKING = {
             colorClass: "c-bookbinding",
             weekdays: [4, 5, 6], /* Thursday, Friday & Saturday */
             start: "15:00",
-            end: "18:00",
+            end: "17:00",
             price: "49 €",
             image: "images/book-binding.webp",
             desc: "Hand-bind your own book with one of the last traditional bookbinders in Tunis. Fold, stitch and press, an endangered craft you help keep alive by learning it.",
             facts: [
-                "3 hours · historic atelier in the Medina",
+                "2 hours · historic atelier in the Medina · in French",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · French"
+                "All levels welcome"
             ],
             booked: {},
             except: [],
@@ -81,15 +81,15 @@ var CV_BOOKING = {
             colorClass: "c-calligraphy",
             weekdays: [5, 6, 0], /* Friday, Saturday & Sunday */
             start: "10:00",
-            end: "13:00",
+            end: "12:00",
             price: "49 €",
             image: "images/calligraphy.webp",
             desc: "Learn the strokes, rhythm and meaning of Arabic script with a master calligrapher. A meditative practice of precision and patience, you leave with your own finished piece.",
             facts: [
-                "3 hours · atelier in Tunis",
+                "2 hours · atelier in Tunis · in French",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · French"
+                "All levels welcome"
             ],
             booked: {},
             except: [],
@@ -103,15 +103,15 @@ var CV_BOOKING = {
             colorClass: "c-ebru",
             weekdays: [4, 5, 6], /* Thursday, Friday & Saturday — same as Bookbinding */
             start: "15:00",
-            end: "18:00",
+            end: "17:00",
             price: "49 €",
             image: "images/opt/ebru-marbling.jpg",
             desc: "Float colour on water and lift it onto paper: the mesmerising art of marbling. Every sheet is unrepeatable, and yours to keep.",
             facts: [
-                "3 hours · marbling atelier in Tunis",
+                "2 hours · marbling atelier in Tunis · in French",
                 "Small group · max 6 participants",
                 "All materials included",
-                "No experience needed · French"
+                "All levels welcome"
             ],
             booked: {},
             except: [],
@@ -128,10 +128,9 @@ var CV_BOOKING = {
             image: "images/opt/medina-gate.jpg",
             desc: "Explore the Medina through the eyes of someone who truly knows it: hidden corners, living craftsmanship and stories off the tourist trail.",
             facts: [
-                "1.5 hours · guided walking tour",
+                "1.5 hours · guided walking tour · English & French",
                 "Small group",
-                "Meeting point shared on booking",
-                "English & French"
+                "Meeting point shared on booking"
             ],
             booked: {},
             except: [],
