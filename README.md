@@ -12,7 +12,7 @@ Static multi-page site, deployed via GitHub Pages at [craftedvisionstravel.com](
 | `about.html` | Story, mission, values |
 | `contact.html` | Contact channels + general form |
 
-Shared assets: `css/main.css` (design system), `js/main.js` (nav, reveal, newsletter, forms), `js/schedule.js` + `js/calendar.js` (booking calendar).
+Shared assets: `css/main.css` (design system), `fonts/` (self-hosted Spectral + Hanken Grotesk), `js/main.js` (nav, reveal, newsletter, forms), `js/schedule.js` + `js/calendar.js` (booking calendar).
 
 ## Editing the workshop schedule
 
@@ -40,3 +40,10 @@ Until then, submitting shows a polite fallback asking visitors to email directly
 - **Newsletter**: Mailchimp JSONP endpoint, configured in `js/main.js` (`MC_URL`).
 - **WhatsApp**: `wa.me/4915238418305` links (number never displayed on the page). Swap to a business number by searching for `wa.me/` across the HTML files.
 - **Payments**: Stripe payment link in `js/schedule.js`; the workshop + date are confirmed inside Stripe checkout.
+
+## Security notes
+
+- **Content-Security-Policy**: every page has a `<meta http-equiv="Content-Security-Policy">` tag in `<head>`. It only allows our own files plus Mailchimp (newsletter) and Formspree (forms). If you add a new outside service (an embedded map, analytics, a video player), add its domain to that tag on every page, or the browser will block it.
+- **Fonts are self-hosted** (`fonts/`), so no visitor IPs go to Google (GDPR). Don't re-add the Google Fonts `<link>`.
+- **Form spam trap**: both forms include a hidden `_gotcha` field. Formspree drops any submission where it is filled in. Keep it when editing the forms.
+- **This README is not published**: `_config.yml` excludes it from the live site.

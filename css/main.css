@@ -951,3 +951,6 @@ main { padding-top: var(--nav-h); }
 .mc-popup__note strong { color: var(--ink-soft); }
 @keyframes mc-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes mc-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Form spam trap (Formspree _gotcha): off-screen, never seen by visitors */
+.hp-field { position: absolute; left: -5000px; width: 1px; height: 1px; overflow: hidden; }

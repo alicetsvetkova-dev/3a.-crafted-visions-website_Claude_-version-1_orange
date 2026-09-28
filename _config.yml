@@ -1,0 +1,4 @@
+# GitHub Pages build settings.
+# Keep internal notes out of the published site (README.md was reachable at /README.md).
+exclude:
+  - README.md
