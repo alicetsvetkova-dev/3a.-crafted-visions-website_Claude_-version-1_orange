@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.list-manage.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Team-Buildings &amp; Corporate Events | Crafted Visions</title>
     <meta name="description" content="Coaching-based team-buildings in artisan ateliers in Tunis or at your venue. Collaboration, communication and intercultural competence, with a CSR story your company can stand behind.">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="stylesheet" href="css/main.css?v=28">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css?v=29">
+    <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="preload" as="image" href="images/teambuilding-companies.jpg?v=3" fetchpriority="high">
     <meta property="og:title" content="Team-Buildings &amp; Corporate Events | Crafted Visions">
     <meta property="og:description" content="Team development your people will still talk about in a year: crafts, coaching methodology and a genuine CSR story.">
@@ -316,6 +316,8 @@
                         <textarea id="tb-goals" name="goals" placeholder="New team looking to gel? Communication friction? Reward &amp; reconnect after a hard quarter? Tell us the honest version."></textarea>
                     </div>
                     <input type="hidden" name="_subject" value="Team-building inquiry: craftedvisionstravel.com">
+                    <!-- Spam trap: hidden from people; Formspree discards submissions that fill it -->
+                    <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
                     <p class="form__msg" aria-live="polite"></p>
                     <div class="form__field--full">
                         <button type="submit" class="btn">Send inquiry</button>
