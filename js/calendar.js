@@ -54,13 +54,19 @@
             /* Guided Medina Tour is a tour, not a workshop — always list it last */
             var aM = a.id === "medina-tour", bM = b.id === "medina-tour";
             if (aM !== bM) { return aM ? 1 : -1; }
-            return a.start < b.start ? -1 : 1;
+            return timesFor(d, a).start < timesFor(d, b).start ? -1 : 1;
         });
+    }
+
+    /* Effective start/end for a date — supports per-date overrides via w.extraTimes */
+    function timesFor(d, w) {
+        var o = w.extraTimes && w.extraTimes[iso(d)];
+        return { start: (o && o.start) || w.start, end: (o && o.end) || w.end };
     }
 
     /* Exact start moment of a session on a given date */
     function sessionStart(d, w) {
-        var p = w.start.split(":");
+        var p = timesFor(d, w).start.split(":");
         return new Date(d.getFullYear(), d.getMonth(), d.getDate(), +p[0], +p[1] || 0);
     }
 
@@ -204,7 +210,7 @@
                 html += '<button type="button" class="sess__top" aria-expanded="true">';
                 html += '<img class="sess__thumb" src="' + w.image + '" alt="' + w.name + '" loading="lazy">';
                 html += '<span class="sess__meta"><span class="sess__name">' + w.name + "</span>" +
-                    '<span class="sess__time">' + w.start + " – " + w.end + " · Tunis</span>" +
+                    '<span class="sess__time">' + timesFor(selected, w).start + " – " + timesFor(selected, w).end + " · Tunis</span>" +
                     '<span class="' + spotsCls + '">' + spotsLabel + "</span></span>";
                 html += '<span class="sess__price">' + w.price + "</span>";
                 html += '<span class="sess__chev">▾</span>';
