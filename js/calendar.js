@@ -42,6 +42,13 @@
     function wDesc(w) { return (FR && w.desc_fr) || w.desc; }
     function wFacts(w) { return (FR && w.facts_fr) || w.facts; }
 
+    /* Times: "10:00" stays as-is in English; French uses "10 h" / "10 h 30" */
+    function fmtT(t) {
+        if (!FR) { return t; }
+        var p = t.split(":"), mm = p[1] || "00";
+        return String(+p[0]) + "&nbsp;h" + (mm === "00" ? "" : "&nbsp;" + mm);
+    }
+
     var now = new Date();
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
@@ -122,7 +129,7 @@
 
         var html = "";
         html += '<div class="cal__head">';
-        html += '<h3 class="cal__month">' + MONTHS[m] + " " + y + "</h3>";
+        html += '<h3 class="cal__month">' + (FR ? MONTHS[m].charAt(0).toUpperCase() + MONTHS[m].slice(1) : MONTHS[m]) + " " + y + "</h3>";
         html += '<div class="cal__nav">';
         html += '<button class="cal__btn" data-nav="-1" aria-label="' + (FR ? "Mois précédent" : "Previous month") + '"' + (canPrev ? "" : " disabled") + ">&larr;</button>";
         html += '<button class="cal__btn" data-nav="1" aria-label="' + (FR ? "Mois suivant" : "Next month") + '"' + (canNext ? "" : " disabled") + ">&rarr;</button>";
@@ -189,7 +196,7 @@
         if (!selected) {
             panel.innerHTML = FR
                 ? ('<p class="day-panel__date">Choisissez une date</p>' +
-                    '<p class="day-panel__hint">Les dates marquées d&rsquo;un point proposent des ateliers disponibles. Les réservations sont ouvertes jusqu&rsquo;à ' +
+                    '<p class="day-panel__hint">Les dates signalées par un point ont des ateliers disponibles. Les réservations sont ouvertes jusqu&rsquo;à ' +
                     CV_BOOKING.monthsAhead + " mois à l&rsquo;avance.</p>" +
                     '<div class="day-panel__empty">Sélectionnez un jour mis en évidence dans le calendrier pour voir les sessions, les détails et le paiement sécurisé.</div>')
                 : ('<p class="day-panel__date">Choose a date</p>' +
@@ -240,7 +247,7 @@
                 html += '<button type="button" class="sess__top" aria-expanded="true">';
                 html += '<img class="sess__thumb" src="' + w.image + '" alt="' + wName(w) + '" loading="lazy">';
                 html += '<span class="sess__meta"><span class="sess__name">' + wName(w) + "</span>" +
-                    '<span class="sess__time">' + timesFor(selected, w).start + " – " + timesFor(selected, w).end + " · Tunis</span>" +
+                    '<span class="sess__time">' + fmtT(timesFor(selected, w).start) + " – " + fmtT(timesFor(selected, w).end) + " · Tunis</span>" +
                     '<span class="' + spotsCls + '">' + spotsLabel + "</span></span>";
                 html += '<span class="sess__price">' + w.price + "</span>";
                 html += '<span class="sess__chev">▾</span>';
@@ -250,14 +257,14 @@
                 html += '<ul class="sess__facts">' + wFacts(w).map(function (f) { return "<li>" + f + "</li>"; }).join("") + "</ul>";
                 if (isFull) {
                     var waFull = encodeURIComponent(FR
-                        ? ("Bonjour Crafted Visions ! L'atelier " + wName(w) + " du " + dateLabel + " est complet. Pourriez-vous m'ajouter à la liste d'attente ?")
+                        ? ("Bonjour Crafted Visions\u00a0! La session «\u00a0" + wName(w) + "\u00a0» du " + dateLabel + " est complète. Pourriez-vous m'ajouter à la liste d'attente\u00a0?")
                         : ("Hi Crafted Visions! " + wName(w) + " on " + dateLabel + " is fully booked. Could you add me to the waitlist?"));
                     html += '<div class="sess__full-note">' + (FR
                         ? ('Cette session est complète. <a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waFull + '" target="_blank" rel="noopener">Écrivez-nous pour rejoindre la liste d&rsquo;attente</a> ou choisissez une autre date.')
                         : ('This session is fully booked. <a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waFull + '" target="_blank" rel="noopener">Message us to join the waitlist</a> or pick another date.')) + '</div>';
                 } else if (isClosed) {
                     var waLate = encodeURIComponent(FR
-                        ? ("Bonjour Crafted Visions ! Reste-t-il une place de dernière minute pour " + wName(w) + " le " + dateLabel + " ?")
+                        ? ("Bonjour Crafted Visions\u00a0! Reste-t-il une place de dernière minute pour «\u00a0" + wName(w) + "\u00a0» le " + dateLabel + "\u00a0?")
                         : ("Hi Crafted Visions! Is there any last-minute spot for " + wName(w) + " on " + dateLabel + "?"));
                     html += '<div class="sess__full-note">' + (FR
                         ? ('Réservations closes. La réservation en ligne ferme ' + (CV_BOOKING.bookingCutoffHours || 24) + '&nbsp;heures avant une session. ' +
@@ -268,7 +275,7 @@
                     html += '<a class="btn sess__book" target="_blank" rel="noopener" href="' + (w.stripeUrl || CV_BOOKING.stripeUrl) + '">' +
                         (FR ? "Réserver " : "Book ") + wName(w) + " · " + w.price + "</a>";
                     html += '<p class="sess__note">' + (FR
-                        ? ("Paiement sécurisé Stripe : sélectionnez votre atelier et votre date (" + dateLabel + ") à l&rsquo;étape suivante. Confirmation sous 24&nbsp;h. Une session a lieu à partir de " + minSpots + " participants.")
+                        ? ("Paiement sécurisé via Stripe&nbsp;: sélectionnez votre atelier et votre date (" + dateLabel + ") à l&rsquo;étape suivante. Confirmation sous 24&nbsp;h. Une session a lieu à partir de " + minSpots + " participants.")
                         : ("Secure Stripe checkout: select your workshop and date (" + dateLabel + ") in the next step. Confirmation within 24&nbsp;h. A session takes place with a minimum of " + minSpots + " participants.")) + "</p>";
                 }
                 html += "</div></article>";
@@ -277,11 +284,11 @@
 
         /* Ask for a different workshop on this date */
         var waText = encodeURIComponent(FR
-            ? ("Bonjour Crafted Visions ! J'aimerais beaucoup faire un autre atelier le " + dateLabel + ". Est-ce possible ?")
+            ? ("Bonjour Crafted Visions\u00a0! J'aimerais beaucoup faire un autre atelier le " + dateLabel + ". Est-ce possible\u00a0?")
             : ("Hi Crafted Visions! I'd love to do a different workshop on " + dateLabel + ". Is that possible?"));
-        var subject = encodeURIComponent((FR ? "Demande d'atelier : " : "Workshop request: ") + dateLabel);
+        var subject = encodeURIComponent((FR ? "Demande d'atelier\u00a0: " : "Workshop request: ") + dateLabel);
         html += '<div class="day-panel__ask">' + (FR
-            ? ('Envie d&rsquo;un autre métier à cette date ? ' +
+            ? ('Envie d&rsquo;un autre métier à cette date&nbsp;? ' +
                 '<a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waText + '" target="_blank" rel="noopener">Demandez-nous sur WhatsApp</a> ou ' +
                 '<a href="mailto:' + CV_BOOKING.email + '?subject=' + subject + '">écrivez-nous</a> et nous ferons de notre mieux pour l&rsquo;organiser.')
             : ('Dreaming of a different craft on this date? ' +
