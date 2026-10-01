@@ -104,7 +104,9 @@ var CV_BOOKING = {
             weekdays: [4, 5, 6], /* Thursday, Friday & Saturday — same as Bookbinding */
             start: "15:00",
             end: "17:00",
-            price: "49 €",
+            price: "59 €",
+            /* Ebru has its own price and dedicated Stripe link */
+            stripeUrl: "https://buy.stripe.com/5kQ7sN1Kw1Ga9KEbUU53O0b",
             image: "images/opt/ebru-marbling.jpg",
             desc: "Float colour on water and lift it onto paper: the mesmerising art of marbling. Every sheet is unrepeatable, and yours to keep.",
             facts: [
