@@ -12,6 +12,11 @@
    - a date that reaches CV_BOOKING.maxSpots shows "Fully booked"
      with a WhatsApp waitlist link instead of the book button
    No edits needed here for schedule changes.
+
+   Language: on pages with <html lang="fr"> the calendar renders in
+   French (months, weekdays, all UI copy and messages). Workshop
+   name/desc/facts come from the *_fr fields in js/schedule.js when
+   present; English otherwise. English pages are unaffected.
    ============================================================ */
 (function () {
     "use strict";
@@ -20,9 +25,22 @@
     var panel = document.getElementById("cv-day-panel");
     if (!root || !panel || typeof CV_BOOKING === "undefined") { return; }
 
-    var MONTHS = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
-    var DOWS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    var FR = (document.documentElement.getAttribute("lang") || "en").slice(0, 2) === "fr";
+    var LOCALE = FR ? "fr-FR" : "en-GB";
+
+    var MONTHS = FR
+        ? ["janvier", "février", "mars", "avril", "mai", "juin",
+            "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+        : ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+    var DOWS = FR
+        ? ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"]
+        : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+    /* Workshop display fields: French variants when present and lang=fr */
+    function wName(w) { return (FR && w.name_fr) || w.name; }
+    function wDesc(w) { return (FR && w.desc_fr) || w.desc; }
+    function wFacts(w) { return (FR && w.facts_fr) || w.facts; }
 
     var now = new Date();
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -106,8 +124,8 @@
         html += '<div class="cal__head">';
         html += '<h3 class="cal__month">' + MONTHS[m] + " " + y + "</h3>";
         html += '<div class="cal__nav">';
-        html += '<button class="cal__btn" data-nav="-1" aria-label="Previous month"' + (canPrev ? "" : " disabled") + ">&larr;</button>";
-        html += '<button class="cal__btn" data-nav="1" aria-label="Next month"' + (canNext ? "" : " disabled") + ">&rarr;</button>";
+        html += '<button class="cal__btn" data-nav="-1" aria-label="' + (FR ? "Mois précédent" : "Previous month") + '"' + (canPrev ? "" : " disabled") + ">&larr;</button>";
+        html += '<button class="cal__btn" data-nav="1" aria-label="' + (FR ? "Mois suivant" : "Next month") + '"' + (canNext ? "" : " disabled") + ">&rarr;</button>";
         html += "</div></div>";
 
         html += '<div class="cal__grid">';
@@ -130,8 +148,11 @@
                     return '<i class="' + w.colorClass + '"></i>';
                 }).join("") + "</span>";
                 if (selected && d.getTime() === selected.getTime()) { cls += " cal__day--selected"; }
+                var dayAria = FR
+                    ? (sess.length + " atelier" + (sess.length > 1 ? "s" : "") + " le " + day + " " + MONTHS[m])
+                    : (sess.length + " workshop" + (sess.length > 1 ? "s" : "") + " on " + MONTHS[m] + " " + day);
                 html += '<button type="button" class="' + cls + '" data-date="' + iso(d) + '" aria-label="' +
-                    sess.length + " workshop" + (sess.length > 1 ? "s" : "") + " on " + MONTHS[m] + " " + day + '">' +
+                    dayAria + '">' +
                     day + dots + "</button>";
             } else {
                 html += '<div class="' + cls + '">' + day + "</div>";
@@ -140,7 +161,7 @@
         html += "</div>";
 
         html += '<div class="cal__legend">' + CV_BOOKING.workshops.map(function (w) {
-            return "<span><i class=\"" + w.colorClass + "\"></i>" + w.name + "</span>";
+            return "<span><i class=\"" + w.colorClass + "\"></i>" + wName(w) + "</span>";
         }).join("") + "</div>";
 
         root.innerHTML = html;
@@ -166,23 +187,30 @@
 
     function renderPanel() {
         if (!selected) {
-            panel.innerHTML =
-                '<p class="day-panel__date">Choose a date</p>' +
-                '<p class="day-panel__hint">Dates with a marker have workshops available. Bookings open up to ' +
-                CV_BOOKING.monthsAhead + " months ahead.</p>" +
-                '<div class="day-panel__empty">Select a highlighted day in the calendar to see the sessions, details and secure checkout.</div>';
+            panel.innerHTML = FR
+                ? ('<p class="day-panel__date">Choisissez une date</p>' +
+                    '<p class="day-panel__hint">Les dates marquées d&rsquo;un point proposent des ateliers disponibles. Les réservations sont ouvertes jusqu&rsquo;à ' +
+                    CV_BOOKING.monthsAhead + " mois à l&rsquo;avance.</p>" +
+                    '<div class="day-panel__empty">Sélectionnez un jour mis en évidence dans le calendrier pour voir les sessions, les détails et le paiement sécurisé.</div>')
+                : ('<p class="day-panel__date">Choose a date</p>' +
+                    '<p class="day-panel__hint">Dates with a marker have workshops available. Bookings open up to ' +
+                    CV_BOOKING.monthsAhead + " months ahead.</p>" +
+                    '<div class="day-panel__empty">Select a highlighted day in the calendar to see the sessions, details and secure checkout.</div>');
             return;
         }
         var sess = sessionsOn(selected);
-        var dateLabel = selected.toLocaleDateString("en-GB", {
+        var dateLabel = selected.toLocaleDateString(LOCALE, {
             weekday: "long", day: "numeric", month: "long", year: "numeric"
         });
         var html = '<p class="day-panel__date">' + dateLabel + "</p>";
-        html += '<p class="day-panel__hint">' + sess.length + " workshop" + (sess.length > 1 ? "s" : "") +
-            " available. Open one for details &amp; booking.</p>";
+        html += '<p class="day-panel__hint">' + (FR
+            ? (sess.length + " atelier" + (sess.length > 1 ? "s" : "") + " disponible" + (sess.length > 1 ? "s" : "") +
+                ". Ouvrez-en un pour les détails et la réservation.")
+            : (sess.length + " workshop" + (sess.length > 1 ? "s" : "") +
+                " available. Open one for details &amp; booking.")) + "</p>";
 
         if (!sess.length) {
-            html += '<div class="day-panel__empty">No sessions on this date.</div>';
+            html += '<div class="day-panel__empty">' + (FR ? "Aucune session à cette date." : "No sessions on this date.") + "</div>";
         } else {
             var maxSpots = CV_BOOKING.maxSpots || 6;
             var minSpots = CV_BOOKING.minSpots || 2;
@@ -196,56 +224,69 @@
                 var spotsLabel;
                 if (isFull) {
                     spotsCls += " sess__spots--full";
-                    spotsLabel = "Fully booked";
+                    spotsLabel = FR ? "Complet" : "Fully booked";
                 } else if (isClosed) {
                     spotsCls += " sess__spots--full";
-                    spotsLabel = "Booking closed";
+                    spotsLabel = FR ? "Réservations closes" : "Booking closed";
                 } else if (booked > 0) {
                     if (left <= 2) { spotsCls += " sess__spots--low"; }
-                    spotsLabel = booked + " of " + maxSpots + " spots booked · " + left + " left";
+                    spotsLabel = FR
+                        ? (booked + " place" + (booked > 1 ? "s" : "") + " réservée" + (booked > 1 ? "s" : "") + " sur " + maxSpots + " · " + left + " restante" + (left > 1 ? "s" : ""))
+                        : (booked + " of " + maxSpots + " spots booked · " + left + " left");
                 } else {
-                    spotsLabel = maxSpots + " spots open";
+                    spotsLabel = FR ? (maxSpots + " places disponibles") : (maxSpots + " spots open");
                 }
                 html += '<article class="sess' + (isFull || isClosed ? " sess--full" : "") + (sess.length === 1 || i === 0 ? " open" : "") + '">';
                 html += '<button type="button" class="sess__top" aria-expanded="true">';
-                html += '<img class="sess__thumb" src="' + w.image + '" alt="' + w.name + '" loading="lazy">';
-                html += '<span class="sess__meta"><span class="sess__name">' + w.name + "</span>" +
+                html += '<img class="sess__thumb" src="' + w.image + '" alt="' + wName(w) + '" loading="lazy">';
+                html += '<span class="sess__meta"><span class="sess__name">' + wName(w) + "</span>" +
                     '<span class="sess__time">' + timesFor(selected, w).start + " – " + timesFor(selected, w).end + " · Tunis</span>" +
                     '<span class="' + spotsCls + '">' + spotsLabel + "</span></span>";
                 html += '<span class="sess__price">' + w.price + "</span>";
                 html += '<span class="sess__chev">▾</span>';
                 html += "</button>";
                 html += '<div class="sess__detail">';
-                html += '<p class="sess__desc">' + w.desc + "</p>";
-                html += '<ul class="sess__facts">' + w.facts.map(function (f) { return "<li>" + f + "</li>"; }).join("") + "</ul>";
+                html += '<p class="sess__desc">' + wDesc(w) + "</p>";
+                html += '<ul class="sess__facts">' + wFacts(w).map(function (f) { return "<li>" + f + "</li>"; }).join("") + "</ul>";
                 if (isFull) {
-                    var waFull = encodeURIComponent("Hi Crafted Visions! " + w.name + " on " + dateLabel +
-                        " is fully booked. Could you add me to the waitlist?");
-                    html += '<div class="sess__full-note">This session is fully booked. ' +
-                        '<a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waFull + '" target="_blank" rel="noopener">Message us to join the waitlist</a> or pick another date.</div>';
+                    var waFull = encodeURIComponent(FR
+                        ? ("Bonjour Crafted Visions ! L'atelier " + wName(w) + " du " + dateLabel + " est complet. Pourriez-vous m'ajouter à la liste d'attente ?")
+                        : ("Hi Crafted Visions! " + wName(w) + " on " + dateLabel + " is fully booked. Could you add me to the waitlist?"));
+                    html += '<div class="sess__full-note">' + (FR
+                        ? ('Cette session est complète. <a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waFull + '" target="_blank" rel="noopener">Écrivez-nous pour rejoindre la liste d&rsquo;attente</a> ou choisissez une autre date.')
+                        : ('This session is fully booked. <a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waFull + '" target="_blank" rel="noopener">Message us to join the waitlist</a> or pick another date.')) + '</div>';
                 } else if (isClosed) {
-                    var waLate = encodeURIComponent("Hi Crafted Visions! Is there any last-minute spot for " +
-                        w.name + " on " + dateLabel + "?");
-                    html += '<div class="sess__full-note">Booking closed. Online booking closes ' +
-                        (CV_BOOKING.bookingCutoffHours || 24) + '&nbsp;hours before a session. ' +
-                        '<a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waLate + '" target="_blank" rel="noopener">Message us on WhatsApp</a> for last-minute availability.</div>';
+                    var waLate = encodeURIComponent(FR
+                        ? ("Bonjour Crafted Visions ! Reste-t-il une place de dernière minute pour " + wName(w) + " le " + dateLabel + " ?")
+                        : ("Hi Crafted Visions! Is there any last-minute spot for " + wName(w) + " on " + dateLabel + "?"));
+                    html += '<div class="sess__full-note">' + (FR
+                        ? ('Réservations closes. La réservation en ligne ferme ' + (CV_BOOKING.bookingCutoffHours || 24) + '&nbsp;heures avant une session. ' +
+                            '<a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waLate + '" target="_blank" rel="noopener">Écrivez-nous sur WhatsApp</a> pour les disponibilités de dernière minute.')
+                        : ('Booking closed. Online booking closes ' + (CV_BOOKING.bookingCutoffHours || 24) + '&nbsp;hours before a session. ' +
+                            '<a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waLate + '" target="_blank" rel="noopener">Message us on WhatsApp</a> for last-minute availability.')) + '</div>';
                 } else {
-                    html += '<a class="btn sess__book" target="_blank" rel="noopener" href="' + (w.stripeUrl || CV_BOOKING.stripeUrl) + '">Book ' +
-                        w.name + " · " + w.price + "</a>";
-                    html += '<p class="sess__note">Secure Stripe checkout: select your workshop and date (' +
-                        dateLabel + ") in the next step. Confirmation within 24&nbsp;h. " +
-                        "A session takes place with a minimum of " + minSpots + " participants.</p>";
+                    html += '<a class="btn sess__book" target="_blank" rel="noopener" href="' + (w.stripeUrl || CV_BOOKING.stripeUrl) + '">' +
+                        (FR ? "Réserver " : "Book ") + wName(w) + " · " + w.price + "</a>";
+                    html += '<p class="sess__note">' + (FR
+                        ? ("Paiement sécurisé Stripe : sélectionnez votre atelier et votre date (" + dateLabel + ") à l&rsquo;étape suivante. Confirmation sous 24&nbsp;h. Une session a lieu à partir de " + minSpots + " participants.")
+                        : ("Secure Stripe checkout: select your workshop and date (" + dateLabel + ") in the next step. Confirmation within 24&nbsp;h. A session takes place with a minimum of " + minSpots + " participants.")) + "</p>";
                 }
                 html += "</div></article>";
             });
         }
 
         /* Ask for a different workshop on this date */
-        var waText = encodeURIComponent("Hi Crafted Visions! I'd love to do a different workshop on " +
-            dateLabel + ". Is that possible?");
-        html += '<div class="day-panel__ask">Dreaming of a different craft on this date? ' +
-            '<a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waText + '" target="_blank" rel="noopener">Ask us on WhatsApp</a> or ' +
-            '<a href="mailto:' + CV_BOOKING.email + '?subject=' + encodeURIComponent("Workshop request: " + dateLabel) + '">email us</a> and we&rsquo;ll do our best to arrange it.</div>';
+        var waText = encodeURIComponent(FR
+            ? ("Bonjour Crafted Visions ! J'aimerais beaucoup faire un autre atelier le " + dateLabel + ". Est-ce possible ?")
+            : ("Hi Crafted Visions! I'd love to do a different workshop on " + dateLabel + ". Is that possible?"));
+        var subject = encodeURIComponent((FR ? "Demande d'atelier : " : "Workshop request: ") + dateLabel);
+        html += '<div class="day-panel__ask">' + (FR
+            ? ('Envie d&rsquo;un autre métier à cette date ? ' +
+                '<a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waText + '" target="_blank" rel="noopener">Demandez-nous sur WhatsApp</a> ou ' +
+                '<a href="mailto:' + CV_BOOKING.email + '?subject=' + subject + '">écrivez-nous</a> et nous ferons de notre mieux pour l&rsquo;organiser.')
+            : ('Dreaming of a different craft on this date? ' +
+                '<a href="https://wa.me/' + CV_BOOKING.whatsapp + '?text=' + waText + '" target="_blank" rel="noopener">Ask us on WhatsApp</a> or ' +
+                '<a href="mailto:' + CV_BOOKING.email + '?subject=' + subject + '">email us</a> and we&rsquo;ll do our best to arrange it.')) + '</div>';
 
         panel.innerHTML = html;
 

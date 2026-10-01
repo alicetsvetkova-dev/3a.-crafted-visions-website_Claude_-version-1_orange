@@ -176,6 +176,12 @@ h3 { font-size: var(--fs-h3); }
 .nav__link--active { color: var(--clay); }
 .nav__link--active:hover { color: var(--clay); }
 .nav__cta { margin-left: 0.5rem; }
+/* Language switcher (EN | FR) */
+.nav__lang { display: inline-flex; align-items: center; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.06em; }
+.nav__lang-a { color: var(--muted); text-decoration: none; padding: 0.2rem 0.5rem; line-height: 1; }
+.nav__lang-a:first-child { border-right: 1px solid var(--line); }
+.nav__lang-a:hover { color: var(--ink); }
+.nav__lang-a.is-current { color: var(--clay); cursor: default; }
 
 .nav__burger {
     display: none;

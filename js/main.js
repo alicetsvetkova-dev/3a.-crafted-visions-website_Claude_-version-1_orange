@@ -2,6 +2,27 @@
 (function () {
     "use strict";
 
+    /* ── Language: French strings on /fr/ pages (html lang="fr"), English otherwise ── */
+    var FR = (document.documentElement.getAttribute("lang") || "en").slice(0, 2) === "fr";
+    var T = {
+        emailInvalid: FR ? "Veuillez saisir une adresse e-mail valide." : "Please enter a valid email address.",
+        submitting: FR ? "Envoi…" : "Submitting…",
+        popupThanks: FR ? "Merci" : "Thank you",
+        popupTitle: FR ? "Presque terminé" : "Almost there",
+        popupText: FR ? "Vérifiez votre boîte de réception et cliquez sur le lien de confirmation pour finaliser votre inscription." : "Please check your inbox and click the confirmation link to complete your signup.",
+        popupSpam: FR ? "Vous ne le voyez pas ? Pensez à vérifier votre dossier <strong>spam ou courrier indésirable</strong>." : "Don&rsquo;t see it? Please check your <strong>spam or junk</strong> folder.",
+        close: FR ? "Fermer" : "Close",
+        genericRetry: FR ? "Une erreur s&rsquo;est produite. Veuillez réessayer." : "Something went wrong. Please try again.",
+        alreadyIn: FR ? "Vous êtes déjà inscrit(e) à la liste." : "You’re already on the list.",
+        netRetry: FR ? "Erreur réseau. Veuillez réessayer." : "Network error. Please try again.",
+        formNotConnected: FR ? "Le formulaire n’est pas encore connecté. Écrivez-nous directement à crafted.visions@outlook.com." : "The form is not connected yet. Please email us directly at crafted.visions@outlook.com.",
+        sending: FR ? "Envoi…" : "Sending…",
+        inquiryOk: FR ? "Merci. Nous avons bien reçu votre demande et vous répondrons sous un jour ouvré." : "Thank you. We’ve received your inquiry and will reply within one business day.",
+        inquiryErr: FR ? "Une erreur s’est produite. Écrivez-nous à crafted.visions@outlook.com." : "Something went wrong. Please email us at crafted.visions@outlook.com.",
+        inquiryNet: FR ? "Erreur réseau. Écrivez-nous à crafted.visions@outlook.com." : "Network error. Please email us at crafted.visions@outlook.com.",
+        emailCopied: FR ? "Adresse e-mail copiée : " : "Email address copied: "
+    };
+
     /* ── WhatsApp: assemble the number at runtime so it is never in the page source for scrapers ── */
     (function () {
         var num = ["491", "768", "736", "1752"].join("");
@@ -94,11 +115,11 @@
         el.hidden = true;
         el.innerHTML =
             '<div class="mc-popup__box" role="dialog" aria-modal="true" aria-labelledby="mc-popup-title">' +
-                '<button class="mc-popup__close" type="button" aria-label="Close">×</button>' +
-                '<p class="mc-popup__eyebrow">Thank you</p>' +
-                '<h3 class="mc-popup__title" id="mc-popup-title">Almost there</h3>' +
-                '<p class="mc-popup__text">Please check your inbox and click the confirmation link to complete your signup.</p>' +
-                '<p class="mc-popup__note">Don&rsquo;t see it? Please check your <strong>spam or junk</strong> folder.</p>' +
+                '<button class="mc-popup__close" type="button" aria-label="' + T.close + '">×</button>' +
+                '<p class="mc-popup__eyebrow">' + T.popupThanks + '</p>' +
+                '<h3 class="mc-popup__title" id="mc-popup-title">' + T.popupTitle + '</h3>' +
+                '<p class="mc-popup__text">' + T.popupText + '</p>' +
+                '<p class="mc-popup__note">' + T.popupSpam + '</p>' +
             '</div>';
         document.body.appendChild(el);
         function close() { el.hidden = true; }
@@ -124,10 +145,10 @@
             e.preventDefault();
             var val = email.value.trim();
             if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-                if (msg) { msg.textContent = "Please enter a valid email address."; }
+                if (msg) { msg.textContent = T.emailInvalid; }
                 return;
             }
-            if (msg) { msg.textContent = "Submitting…"; }
+            if (msg) { msg.textContent = T.submitting; }
             btn.disabled = true;
             var hpField = form.querySelector('input[name="' + MC_HONEYPOT + '"]');
             var cb = "mcCallback_" + Date.now();
@@ -142,8 +163,8 @@
                     form.reset();
                     mcPopup().hidden = false;
                 } else {
-                    var err = (data.msg || "Something went wrong. Please try again.").replace(/<[^>]+>/g, "");
-                    if (/already subscribed/i.test(err)) { err = "You’re already on the list."; }
+                    var err = (data.msg || T.genericRetry).replace(/<[^>]+>/g, "");
+                    if (/already subscribed/i.test(err)) { err = T.alreadyIn; }
                     if (msg) { msg.textContent = err; }
                 }
                 delete window[cb];
@@ -152,7 +173,7 @@
             script.src = url;
             script.onerror = function () {
                 btn.disabled = false;
-                if (msg) { msg.textContent = "Network error. Please try again."; }
+                if (msg) { msg.textContent = T.netRetry; }
                 delete window[cb];
             };
             document.body.appendChild(script);
@@ -166,11 +187,11 @@
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
-                msg.textContent = "The form is not connected yet. Please email us directly at crafted.visions@outlook.com.";
+                msg.textContent = T.formNotConnected;
                 msg.className = "form__msg form__msg--err";
                 return;
             }
-            msg.textContent = "Sending…";
+            msg.textContent = T.sending;
             msg.className = "form__msg";
             btn.disabled = true;
             fetch(form.action, {
@@ -180,16 +201,16 @@
             }).then(function (res) {
                 btn.disabled = false;
                 if (res.ok) {
-                    msg.textContent = "Thank you. We’ve received your inquiry and will reply within one business day.";
+                    msg.textContent = T.inquiryOk;
                     msg.className = "form__msg form__msg--ok";
                     form.reset();
                 } else {
-                    msg.textContent = "Something went wrong. Please email us at crafted.visions@outlook.com.";
+                    msg.textContent = T.inquiryErr;
                     msg.className = "form__msg form__msg--err";
                 }
             }).catch(function () {
                 btn.disabled = false;
-                msg.textContent = "Network error. Please email us at crafted.visions@outlook.com.";
+                msg.textContent = T.inquiryNet;
                 msg.className = "form__msg form__msg--err";
             });
         });
@@ -235,7 +256,7 @@
                instead of a dead click. */
             var email = a.getAttribute("href").replace(/^mailto:/i, "").split("?")[0];
             copyText(email);
-            showToast("Email address copied: " + email);
+            showToast(T.emailCopied + email);
         });
     });
 
