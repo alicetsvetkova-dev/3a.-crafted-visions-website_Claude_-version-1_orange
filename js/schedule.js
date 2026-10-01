@@ -54,8 +54,8 @@ var CV_BOOKING = {
             booked: {},
             except: [],
             /* One-off extra date with a custom start time (overrides the usual 10:00) */
-            extra: ["2026-10-02"],
-            extraTimes: { "2026-10-02": { start: "14:00", end: "17:00" } }
+            extra: ["2026-10-04"],
+            extraTimes: { "2026-10-04": { start: "14:00", end: "17:00" } }
         },
         {
             id: "bookbinding",
