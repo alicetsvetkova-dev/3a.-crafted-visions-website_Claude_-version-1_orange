@@ -38,12 +38,20 @@ var CV_BOOKING = {
         {
             id: "ceramics",
             name: "Traditional Ceramics",
+            name_fr: "Poterie traditionnelle",
+            desc_fr: "Façonnez l'argile comme elle l'est ici depuis des siècles, guidé par un maître céramiste. Lent, tactile et ancrant, vous emportez la pièce que vous avez faite.",
+            facts_fr: [
+                "3 heures · atelier de poterie en activité · en français",
+                "Petit groupe · 6 participants max",
+                "Tout le matériel inclus",
+                "Tous niveaux bienvenus"
+            ],
             colorClass: "c-ceramics",
             weekdays: [3, 6], /* Wednesday & Saturday */
             start: "10:00",
             end: "13:00",
             price: "49 €",
-            image: "images/opt/atelier-poterie.webp",
+            image: "/images/opt/atelier-poterie.webp",
             desc: "Shape clay the way it has been shaped here for centuries, guided by a master ceramicist. Slow, tactile and grounding, you take home the piece you made.",
             facts: [
                 "3 hours · working pottery atelier · in French",
@@ -60,12 +68,20 @@ var CV_BOOKING = {
         {
             id: "bookbinding",
             name: "Bookbinding",
+            name_fr: "Reliure",
+            desc_fr: "Reliez votre propre livre à la main avec l'un des derniers relieurs traditionnels de Tunis. Pliez, cousez et pressez, un métier menacé que vous aidez à faire vivre en l'apprenant.",
+            facts_fr: [
+                "2 heures · atelier historique dans la médina · en français",
+                "Petit groupe · 6 participants max",
+                "Tout le matériel inclus",
+                "Tous niveaux bienvenus"
+            ],
             colorClass: "c-bookbinding",
             weekdays: [4, 5, 6], /* Thursday, Friday & Saturday */
             start: "15:00",
             end: "17:00",
             price: "49 €",
-            image: "images/book-binding.webp",
+            image: "/images/book-binding.webp",
             desc: "Hand-bind your own book with one of the last traditional bookbinders in Tunis. Fold, stitch and press, an endangered craft you help keep alive by learning it.",
             facts: [
                 "2 hours · historic atelier in the Medina · in French",
@@ -82,12 +98,20 @@ var CV_BOOKING = {
         {
             id: "calligraphy",
             name: "Arabic Calligraphy",
+            name_fr: "Calligraphie arabe",
+            desc_fr: "Apprenez les tracés, le rythme et le sens de l'écriture arabe avec un maître calligraphe. Une pratique méditative de précision et de patience, vous repartez avec votre propre œuvre achevée.",
+            facts_fr: [
+                "2 heures · atelier à Tunis · en français",
+                "Petit groupe · 6 participants max",
+                "Tout le matériel inclus",
+                "Tous niveaux bienvenus"
+            ],
             colorClass: "c-calligraphy",
             weekdays: [5, 6, 0], /* Friday, Saturday & Sunday */
             start: "10:00",
             end: "12:00",
             price: "49 €",
-            image: "images/calligraphy.webp",
+            image: "/images/calligraphy.webp",
             desc: "Learn the strokes, rhythm and meaning of Arabic script with a master calligrapher. A meditative practice of precision and patience, you leave with your own finished piece.",
             facts: [
                 "2 hours · atelier in Tunis · in French",
@@ -104,6 +128,14 @@ var CV_BOOKING = {
         {
             id: "ebru",
             name: "Ebru · Paper Marbling",
+            name_fr: "Ebru · Marbrure sur papier",
+            desc_fr: "Faites flotter la couleur sur l'eau et déposez-la sur le papier : l'art fascinant de la marbrure. Chaque feuille est unique, et elle est à vous.",
+            facts_fr: [
+                "2 heures · atelier de marbrure à Tunis · en français",
+                "Petit groupe · 6 participants max",
+                "Tout le matériel inclus",
+                "Tous niveaux bienvenus"
+            ],
             colorClass: "c-ebru",
             weekdays: [4, 5, 6], /* Thursday, Friday & Saturday — same as Bookbinding */
             start: "15:00",
@@ -111,7 +143,7 @@ var CV_BOOKING = {
             price: "59 €",
             /* Ebru has its own price and dedicated Stripe link */
             stripeUrl: "https://buy.stripe.com/5kQ7sN1Kw1Ga9KEbUU53O0b",
-            image: "images/opt/ebru-marbling.jpg",
+            image: "/images/opt/ebru-marbling.jpg",
             desc: "Float colour on water and lift it onto paper: the mesmerising art of marbling. Every sheet is unrepeatable, and yours to keep.",
             facts: [
                 "2 hours · marbling atelier in Tunis · in French",
@@ -126,6 +158,13 @@ var CV_BOOKING = {
         {
             id: "medina-tour",
             name: "Guided Medina Tour",
+            name_fr: "Visite guidée de la médina",
+            desc_fr: "Explorez la médina à travers les yeux de quelqu'un qui la connaît vraiment : recoins cachés, artisanat vivant et histoires hors des sentiers touristiques.",
+            facts_fr: [
+                "1,5 heure · visite guidée à pied · anglais et français",
+                "Petit groupe",
+                "Point de rendez-vous communiqué à la réservation"
+            ],
             colorClass: "c-medina",
             weekdays: [6, 0], /* Saturday & Sunday — from the live site; confirm before launch */
             start: "09:00",
@@ -133,7 +172,7 @@ var CV_BOOKING = {
             price: "39 €",
             /* Medina tour has its own dedicated 39 € Stripe link (from the July 2026 site) */
             stripeUrl: "https://buy.stripe.com/fZu00l3SEdoSf4Y0cc53O0a",
-            image: "images/opt/medina-gate.jpg",
+            image: "/images/opt/medina-gate.jpg",
             desc: "Explore the Medina through the eyes of someone who truly knows it: hidden corners, living craftsmanship and stories off the tourist trail.",
             facts: [
                 "1.5 hours · guided walking tour · English & French",
