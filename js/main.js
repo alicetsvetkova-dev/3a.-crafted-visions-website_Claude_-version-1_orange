@@ -8,19 +8,19 @@
         emailInvalid: FR ? "Veuillez saisir une adresse e-mail valide." : "Please enter a valid email address.",
         submitting: FR ? "Envoi…" : "Submitting…",
         popupThanks: FR ? "Merci" : "Thank you",
-        popupTitle: FR ? "Presque terminé" : "Almost there",
+        popupTitle: FR ? "C’est presque fini" : "Almost there",
         popupText: FR ? "Vérifiez votre boîte de réception et cliquez sur le lien de confirmation pour finaliser votre inscription." : "Please check your inbox and click the confirmation link to complete your signup.",
-        popupSpam: FR ? "Vous ne le voyez pas ? Pensez à vérifier votre dossier <strong>spam ou courrier indésirable</strong>." : "Don&rsquo;t see it? Please check your <strong>spam or junk</strong> folder.",
+        popupSpam: FR ? "Vous ne le voyez pas&nbsp;? Pensez à vérifier votre dossier <strong>spam ou courrier indésirable</strong>." : "Don&rsquo;t see it? Please check your <strong>spam or junk</strong> folder.",
         close: FR ? "Fermer" : "Close",
         genericRetry: FR ? "Une erreur s&rsquo;est produite. Veuillez réessayer." : "Something went wrong. Please try again.",
-        alreadyIn: FR ? "Vous êtes déjà inscrit(e) à la liste." : "You’re already on the list.",
+        alreadyIn: FR ? "Cette adresse est déjà inscrite à la liste." : "You’re already on the list.",
         netRetry: FR ? "Erreur réseau. Veuillez réessayer." : "Network error. Please try again.",
         formNotConnected: FR ? "Le formulaire n’est pas encore connecté. Écrivez-nous directement à crafted.visions@outlook.com." : "The form is not connected yet. Please email us directly at crafted.visions@outlook.com.",
         sending: FR ? "Envoi…" : "Sending…",
         inquiryOk: FR ? "Merci. Nous avons bien reçu votre demande et vous répondrons sous un jour ouvré." : "Thank you. We’ve received your inquiry and will reply within one business day.",
         inquiryErr: FR ? "Une erreur s’est produite. Écrivez-nous à crafted.visions@outlook.com." : "Something went wrong. Please email us at crafted.visions@outlook.com.",
         inquiryNet: FR ? "Erreur réseau. Écrivez-nous à crafted.visions@outlook.com." : "Network error. Please email us at crafted.visions@outlook.com.",
-        emailCopied: FR ? "Adresse e-mail copiée : " : "Email address copied: "
+        emailCopied: FR ? "Adresse e-mail copiée\u00a0: " : "Email address copied: "
     };
 
     /* ── WhatsApp: assemble the number at runtime so it is never in the page source for scrapers ── */

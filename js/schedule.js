@@ -39,7 +39,7 @@ var CV_BOOKING = {
             id: "ceramics",
             name: "Traditional Ceramics",
             name_fr: "Poterie traditionnelle",
-            desc_fr: "Façonnez l'argile comme elle l'est ici depuis des siècles, guidé par un maître céramiste. Lent, tactile et ancrant, vous emportez la pièce que vous avez faite.",
+            desc_fr: "Façonnez l'argile comme on le fait ici depuis des siècles, sous la conduite d'un maître céramiste. Un moment lent, tactile et apaisant, et vous emportez la pièce que vous avez créée.",
             facts_fr: [
                 "3 heures · atelier de poterie en activité · en français",
                 "Petit groupe · 6 participants max",
@@ -69,7 +69,7 @@ var CV_BOOKING = {
             id: "bookbinding",
             name: "Bookbinding",
             name_fr: "Reliure",
-            desc_fr: "Reliez votre propre livre à la main avec l'un des derniers relieurs traditionnels de Tunis. Pliez, cousez et pressez, un métier menacé que vous aidez à faire vivre en l'apprenant.",
+            desc_fr: "Reliez votre propre livre à la main avec l'un des derniers relieurs traditionnels de Tunis. Pliez, cousez, pressez\u00a0: un métier menacé que vous aidez à faire vivre en l'apprenant.",
             facts_fr: [
                 "2 heures · atelier historique dans la médina · en français",
                 "Petit groupe · 6 participants max",
@@ -99,7 +99,7 @@ var CV_BOOKING = {
             id: "calligraphy",
             name: "Arabic Calligraphy",
             name_fr: "Calligraphie arabe",
-            desc_fr: "Apprenez les tracés, le rythme et le sens de l'écriture arabe avec un maître calligraphe. Une pratique méditative de précision et de patience, vous repartez avec votre propre œuvre achevée.",
+            desc_fr: "Apprenez les tracés, le rythme et le sens de l'écriture arabe avec un maître calligraphe. Une pratique méditative de précision et de patience, et vous repartez avec votre propre œuvre.",
             facts_fr: [
                 "2 heures · atelier à Tunis · en français",
                 "Petit groupe · 6 participants max",
@@ -129,7 +129,7 @@ var CV_BOOKING = {
             id: "ebru",
             name: "Ebru · Paper Marbling",
             name_fr: "Ebru · Marbrure sur papier",
-            desc_fr: "Faites flotter la couleur sur l'eau et déposez-la sur le papier : l'art fascinant de la marbrure. Chaque feuille est unique, et elle est à vous.",
+            desc_fr: "Faites flotter la couleur sur l'eau et déposez-la sur le papier\u00a0: l'art fascinant de la marbrure. Chaque feuille est unique, et elle est à vous.",
             facts_fr: [
                 "2 heures · atelier de marbrure à Tunis · en français",
                 "Petit groupe · 6 participants max",
@@ -159,9 +159,9 @@ var CV_BOOKING = {
             id: "medina-tour",
             name: "Guided Medina Tour",
             name_fr: "Visite guidée de la médina",
-            desc_fr: "Explorez la médina à travers les yeux de quelqu'un qui la connaît vraiment : recoins cachés, artisanat vivant et histoires hors des sentiers touristiques.",
+            desc_fr: "Explorez la médina à travers les yeux de quelqu'un qui la connaît vraiment\u00a0: recoins cachés, artisanat vivant et histoires hors des sentiers touristiques.",
             facts_fr: [
-                "1,5 heure · visite guidée à pied · anglais et français",
+                "1\u00a0h\u00a030 · visite guidée à pied · en anglais et en français",
                 "Petit groupe",
                 "Point de rendez-vous communiqué à la réservation"
             ],

@@ -171,17 +171,23 @@ h3 { font-size: var(--fs-h3); }
     color: var(--ink-soft);
     transition: color 0.2s;
     padding: 4px 0;
+    white-space: nowrap;
 }
 .nav__link:hover { color: var(--ink); }
 .nav__link--active { color: var(--clay); }
 .nav__link--active:hover { color: var(--clay); }
-.nav__cta { margin-left: 0.5rem; }
+.nav__cta { margin-left: 0.5rem; white-space: nowrap; }
 /* Language switcher (EN | FR) */
-.nav__lang { display: inline-flex; align-items: center; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.06em; }
+.nav__lang { display: inline-flex; white-space: nowrap; align-items: center; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.06em; }
 .nav__lang-a { color: var(--muted); text-decoration: none; padding: 0.2rem 0.5rem; line-height: 1; }
 .nav__lang-a:first-child { border-right: 1px solid var(--line); }
 .nav__lang-a:hover { color: var(--ink); }
 .nav__lang-a.is-current { color: var(--clay); cursor: default; }
+/* Mid-size screens: tighter spacing so the whole menu stays on one line */
+@media (max-width: 1199px) {
+    .nav__links { gap: 1.4rem; }
+    .nav__cta { margin-left: 0; }
+}
 
 .nav__burger {
     display: none;
@@ -823,7 +829,8 @@ main { padding-top: var(--nav-h); }
     .day-panel { min-height: 0; }
 }
 
-@media (max-width: 860px) {
+/* Burger menu below 1100px: the full one-line menu needs ~1080px (EN) */
+@media (max-width: 1100px) {
     /* Drop backdrop-filter on mobile: an ancestor with backdrop-filter becomes
        the containing block for position:fixed children, which would trap the
        fullscreen menu inside the 75px nav bar. Keep a near-opaque background. */
@@ -867,7 +874,9 @@ main { padding-top: var(--nav-h); }
         letter-spacing: 0.16em;
         text-transform: uppercase;
     }
+}
 
+@media (max-width: 860px) {
     .paths { grid-template-columns: 1fr; }
     .path { min-height: 420px; padding: 2rem; }
     .cols-3, .cols-2, .steps, .quotes, .exp-grid, .stats, .contact-cards { grid-template-columns: 1fr; }
