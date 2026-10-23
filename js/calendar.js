@@ -275,8 +275,8 @@
                     html += '<a class="btn sess__book" target="_blank" rel="noopener" href="' + (w.stripeUrl || CV_BOOKING.stripeUrl) + '">' +
                         (FR ? "Réserver " : "Book ") + wName(w) + " · " + w.price + "</a>";
                     html += '<p class="sess__note">' + (FR
-                        ? ("Paiement sécurisé via Stripe&nbsp;: sélectionnez votre atelier et votre date (" + dateLabel + ") à l&rsquo;étape suivante. Confirmation sous 24&nbsp;h. Une session a lieu à partir de " + minSpots + " participants.")
-                        : ("Secure Stripe checkout: select your workshop and date (" + dateLabel + ") in the next step. Confirmation within 24&nbsp;h. A session takes place with a minimum of " + minSpots + " participants.")) + "</p>";
+                        ? ("Paiement sécurisé via Stripe&nbsp;: sélectionnez votre atelier et votre date (" + dateLabel + ") à l&rsquo;étape suivante. Confirmation sous 24&nbsp;h. Une session a lieu à partir de " + minSpots + " participants. Les prix incluent toutes les taxes applicables. En réservant, vous acceptez nos <a class=\"text-link\" href=\"terms.html\">conditions et modalités de réservation</a>.")
+                        : ("Secure Stripe checkout: select your workshop and date (" + dateLabel + ") in the next step. Confirmation within 24&nbsp;h. A session takes place with a minimum of " + minSpots + " participants. Prices include all applicable taxes. By booking, you accept our <a class=\"text-link\" href=\"terms.html\">Terms &amp; Booking Conditions</a>.")) + "</p>";
                 }
                 html += "</div></article>";
             });
