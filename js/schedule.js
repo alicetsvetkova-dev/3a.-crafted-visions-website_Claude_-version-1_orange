@@ -31,7 +31,7 @@ var CV_BOOKING = {
     stripeUrl: "https://buy.stripe.com/6oU00l9cY0C66ys8II53O08",
     /* Where waitlist / "ask for a different workshop" requests go */
     /* Assembled from parts so the raw number isn't sitting in the source for scrapers */
-    whatsapp: ["491", "768", "736", "1752"].join(""),
+    whatsapp: ["337", "529", "117", "66"].join(""),
     email: "crafted.visions@outlook.com",
 
     workshops: [
