@@ -23,12 +23,23 @@
         emailCopied: FR ? "Adresse e-mail copiée\u00a0: " : "Email address copied: "
     };
 
-    /* ── WhatsApp: assemble the number at runtime so it is never in the page source for scrapers ── */
+    /* ── WhatsApp + phone: assemble the number at runtime so it is never in the page source for scrapers ── */
     (function () {
         var num = ["337", "529", "117", "66"].join("");
         document.querySelectorAll("a[data-wa]").forEach(function (a) {
             var text = a.getAttribute("data-wa-text");
             a.setAttribute("href", "https://wa.me/" + num + (text ? "?text=" + text : ""));
+        });
+        /* Same number as a clickable phone link ([data-tel] on Imprint + Privacy).
+           Display format is French: +33 7 52 91 17 66 — adjust if the country changes. */
+        var pretty = "+" + num.slice(0, 2) + " " + num.slice(2, 3) + " " + num.slice(3, 5) + " " +
+            num.slice(5, 7) + " " + num.slice(7, 9) + " " + num.slice(9);
+        document.querySelectorAll("[data-tel]").forEach(function (el) {
+            var a = document.createElement("a");
+            a.href = "tel:+" + num;
+            a.textContent = pretty;
+            el.textContent = "";
+            el.appendChild(a);
         });
     })();
 
